@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
+import 'package:second_course_practice_work/injection/injection.dart';
+import 'package:second_course_practice_work/ui/app.dart';
 
-void main() {
-  runApp(MyApp());
-}
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await configureInjection(Environment.dev);
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-    );
-  }
+  runApp(App());
 }
