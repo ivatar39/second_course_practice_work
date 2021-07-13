@@ -34,9 +34,9 @@ class BirdRepository {
     }
   }
 
-  Future<Either<BirdFailure, Unit>> deleteBird(BirdsCompanion bird) async {
+  Future<Either<BirdFailure, Unit>> deleteBirds(Iterable<Bird> birds) async {
     try {
-      await _localDataSource.deleteBird(bird);
+      await _localDataSource.deleteBirds(birds);
       return right(unit);
     } on Exception catch (e) {
       debugPrint(e.toString());

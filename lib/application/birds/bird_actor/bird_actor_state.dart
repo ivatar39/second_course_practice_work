@@ -1,6 +1,12 @@
 part of 'bird_actor_bloc.dart';
 
-@immutable
-abstract class BirdActorState {}
+@freezed
+class BirdActorState with _$BirdActorState {
+  const factory BirdActorState.initial() = Initial;
 
-class InitialBirdActorState extends BirdActorState {}
+  const factory BirdActorState.actionInProgress() = ActionInProgress;
+
+  const factory BirdActorState.actionFailure(BirdFailure failure) = ActionFailure;
+
+  const factory BirdActorState.actionCompleted() = ActionCompleted;
+}

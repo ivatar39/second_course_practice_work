@@ -61,7 +61,9 @@ class LocalDataSource extends _$LocalDataSource {
     return update(birds).replace(bird);
   }
 
-  Future deleteBird(BirdsCompanion bird) {
-    return delete(birds).delete(bird);
+  Future deleteBirds(Iterable<Bird> bird) async {
+    for (final b in bird) {
+      final rows = await delete(birds).delete(b);
+    }
   }
 }

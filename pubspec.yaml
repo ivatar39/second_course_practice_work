@@ -29,6 +29,8 @@ dependencies:
 
   # State management
   flutter_bloc: ^7.0.1
+  provider: ^5.0.0
+  flutter_hooks: ^0.18.0
 
   # Architecture
   dartz: ^0.10.0-nullsafety.2

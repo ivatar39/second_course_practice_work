@@ -7,7 +7,8 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../application/birds/bird_form/bird_form_bloc.dart' as _i7;
+import '../application/birds/bird_actor/bird_actor_bloc.dart' as _i7;
+import '../application/birds/bird_form/bird_form_bloc.dart' as _i8;
 import '../application/birds/birds_wacher/birds_watcher_bloc.dart' as _i6;
 import '../application/main/main_bloc.dart' as _i3;
 import '../data/local_data_source.dart' as _i5;
@@ -24,8 +25,10 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i4.BirdRepository(get<_i5.LocalDataSource>()));
   gh.factory<_i6.BirdsWatcherBloc>(
       () => _i6.BirdsWatcherBloc(get<_i4.BirdRepository>()));
-  gh.factory<_i7.BirdFormBloc>(
-      () => _i7.BirdFormBloc(get<_i4.BirdRepository>()));
+  gh.factory<_i7.BirdActorBloc>(
+      () => _i7.BirdActorBloc(get<_i4.BirdRepository>()));
+  gh.factory<_i8.BirdFormBloc>(
+      () => _i8.BirdFormBloc(get<_i4.BirdRepository>()));
   gh.singleton<_i5.LocalDataSource>(_i5.LocalDataSource());
   return get;
 }
