@@ -6,4 +6,6 @@ class BirdsWatcherState with _$BirdsWatcherState {
   const factory BirdsWatcherState.loadInProgress() = LoadInProgress;
   const factory BirdsWatcherState.loadSuccess(Iterable<Bird> birds) = LoadSuccess;
   const factory BirdsWatcherState.loadFailure(BirdFailure failure) = LoadFailure;
+
+  const factory BirdsWatcherState.queryLoaded(Iterable<dynamic> queryData, String queryName) = QueryLoaded;
 }

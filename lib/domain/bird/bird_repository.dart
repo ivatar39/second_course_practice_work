@@ -20,11 +20,11 @@ class BirdRepository {
       return right(unit);
     } on Exception catch (e) {
       debugPrint(e.toString());
-      return left(const BirdFailure.nameTooLong());
+      return left(BirdFailure.unexpectedFailure(e.toString()));
     }
   }
 
-  Future<Either<BirdFailure, Unit>> editBird(BirdsCompanion bird) async {
+  Future<Either<BirdFailure, Unit>> editBird(Bird bird) async {
     try {
       await _localDataSource.updateBird(bird);
       return right(unit);
@@ -42,5 +42,20 @@ class BirdRepository {
       debugPrint(e.toString());
       return left(const BirdFailure.nameTooLong());
     }
+  }
+
+  Future<Iterable<Bird>> getBirdsByName(String name) async {
+    final birds = await _localDataSource.birdsFilterName(name);
+    return Iterable.castFrom(birds);
+  }
+
+  Future<Iterable<ReservesWithInjuredBirds>> getReservesWithInjuredBirds() async {
+    final birds = await _localDataSource.getReservesWithInjuredBirds();
+    return Iterable.castFrom(birds);
+  }
+
+  Future<Iterable<ReservesWithBirds>> getReservesWithBirds() async {
+    final birds = await _localDataSource.getReservesWithBirds();
+    return Iterable.castFrom(birds);
   }
 }

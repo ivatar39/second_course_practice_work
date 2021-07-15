@@ -10,4 +10,6 @@ class BirdFailure with _$BirdFailure {
   const factory BirdFailure.notNumber() = NotNumber;
 
   const factory BirdFailure.wrongId() = WrongId;
+
+  const factory BirdFailure.unexpectedFailure(String? message) = UnexpectedFailure;
 }

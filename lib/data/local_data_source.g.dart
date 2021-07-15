@@ -10,16 +10,16 @@ part of 'local_data_source.dart';
 class Bird extends DataClass implements Insertable<Bird> {
   final int id;
   final String name;
-  final String type;
-  final double weight;
+  final String? type;
+  final double? weight;
   final bool isInjured;
   final DateTime? birthday;
   final int? reserveId;
   Bird(
       {required this.id,
       required this.name,
-      required this.type,
-      required this.weight,
+      this.type,
+      this.weight,
       required this.isInjured,
       this.birthday,
       this.reserveId});
@@ -32,9 +32,9 @@ class Bird extends DataClass implements Insertable<Bird> {
       name: const StringType()
           .mapFromDatabaseResponse(data['${effectivePrefix}name'])!,
       type: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}type'])!,
+          .mapFromDatabaseResponse(data['${effectivePrefix}type']),
       weight: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}weight'])!,
+          .mapFromDatabaseResponse(data['${effectivePrefix}weight']),
       isInjured: const BoolType()
           .mapFromDatabaseResponse(data['${effectivePrefix}is_injured'])!,
       birthday: const DateTimeType()
@@ -48,8 +48,12 @@ class Bird extends DataClass implements Insertable<Bird> {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
     map['name'] = Variable<String>(name);
-    map['type'] = Variable<String>(type);
-    map['weight'] = Variable<double>(weight);
+    if (!nullToAbsent || type != null) {
+      map['type'] = Variable<String?>(type);
+    }
+    if (!nullToAbsent || weight != null) {
+      map['weight'] = Variable<double?>(weight);
+    }
     map['is_injured'] = Variable<bool>(isInjured);
     if (!nullToAbsent || birthday != null) {
       map['birthday'] = Variable<DateTime?>(birthday);
@@ -64,8 +68,9 @@ class Bird extends DataClass implements Insertable<Bird> {
     return BirdsCompanion(
       id: Value(id),
       name: Value(name),
-      type: Value(type),
-      weight: Value(weight),
+      type: type == null && nullToAbsent ? const Value.absent() : Value(type),
+      weight:
+          weight == null && nullToAbsent ? const Value.absent() : Value(weight),
       isInjured: Value(isInjured),
       birthday: birthday == null && nullToAbsent
           ? const Value.absent()
@@ -82,8 +87,8 @@ class Bird extends DataClass implements Insertable<Bird> {
     return Bird(
       id: serializer.fromJson<int>(json['id']),
       name: serializer.fromJson<String>(json['name']),
-      type: serializer.fromJson<String>(json['type']),
-      weight: serializer.fromJson<double>(json['weight']),
+      type: serializer.fromJson<String?>(json['type']),
+      weight: serializer.fromJson<double?>(json['weight']),
       isInjured: serializer.fromJson<bool>(json['isInjured']),
       birthday: serializer.fromJson<DateTime?>(json['birthday']),
       reserveId: serializer.fromJson<int?>(json['reserveId']),
@@ -95,8 +100,8 @@ class Bird extends DataClass implements Insertable<Bird> {
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
       'name': serializer.toJson<String>(name),
-      'type': serializer.toJson<String>(type),
-      'weight': serializer.toJson<double>(weight),
+      'type': serializer.toJson<String?>(type),
+      'weight': serializer.toJson<double?>(weight),
       'isInjured': serializer.toJson<bool>(isInjured),
       'birthday': serializer.toJson<DateTime?>(birthday),
       'reserveId': serializer.toJson<int?>(reserveId),
@@ -161,8 +166,8 @@ class Bird extends DataClass implements Insertable<Bird> {
 class BirdsCompanion extends UpdateCompanion<Bird> {
   final Value<int> id;
   final Value<String> name;
-  final Value<String> type;
-  final Value<double> weight;
+  final Value<String?> type;
+  final Value<double?> weight;
   final Value<bool> isInjured;
   final Value<DateTime?> birthday;
   final Value<int?> reserveId;
@@ -178,19 +183,17 @@ class BirdsCompanion extends UpdateCompanion<Bird> {
   BirdsCompanion.insert({
     this.id = const Value.absent(),
     required String name,
-    required String type,
-    required double weight,
+    this.type = const Value.absent(),
+    this.weight = const Value.absent(),
     this.isInjured = const Value.absent(),
     this.birthday = const Value.absent(),
     this.reserveId = const Value.absent(),
-  })  : name = Value(name),
-        type = Value(type),
-        weight = Value(weight);
+  }) : name = Value(name);
   static Insertable<Bird> custom({
     Expression<int>? id,
     Expression<String>? name,
-    Expression<String>? type,
-    Expression<double>? weight,
+    Expression<String?>? type,
+    Expression<double?>? weight,
     Expression<bool>? isInjured,
     Expression<DateTime?>? birthday,
     Expression<int?>? reserveId,
@@ -209,8 +212,8 @@ class BirdsCompanion extends UpdateCompanion<Bird> {
   BirdsCompanion copyWith(
       {Value<int>? id,
       Value<String>? name,
-      Value<String>? type,
-      Value<double>? weight,
+      Value<String?>? type,
+      Value<double?>? weight,
       Value<bool>? isInjured,
       Value<DateTime?>? birthday,
       Value<int?>? reserveId}) {
@@ -235,10 +238,10 @@ class BirdsCompanion extends UpdateCompanion<Bird> {
       map['name'] = Variable<String>(name.value);
     }
     if (type.present) {
-      map['type'] = Variable<String>(type.value);
+      map['type'] = Variable<String?>(type.value);
     }
     if (weight.present) {
-      map['weight'] = Variable<double>(weight.value);
+      map['weight'] = Variable<double?>(weight.value);
     }
     if (isInjured.present) {
       map['is_injured'] = Variable<bool>(isInjured.value);
@@ -280,21 +283,19 @@ class $BirdsTable extends Birds with TableInfo<$BirdsTable, Bird> {
   final VerificationMeta _nameMeta = const VerificationMeta('name');
   late final GeneratedColumn<String?> name = GeneratedColumn<String?>(
       'name', aliasedName, false,
-      additionalChecks:
-          GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 30),
+      additionalChecks: GeneratedColumn.checkTextLength(),
       typeName: 'TEXT',
       requiredDuringInsert: true);
   final VerificationMeta _typeMeta = const VerificationMeta('type');
   late final GeneratedColumn<String?> type = GeneratedColumn<String?>(
-      'type', aliasedName, false,
-      additionalChecks:
-          GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 20),
+      'type', aliasedName, true,
+      additionalChecks: GeneratedColumn.checkTextLength(),
       typeName: 'TEXT',
-      requiredDuringInsert: true);
+      requiredDuringInsert: false);
   final VerificationMeta _weightMeta = const VerificationMeta('weight');
   late final GeneratedColumn<double?> weight = GeneratedColumn<double?>(
-      'weight', aliasedName, false,
-      typeName: 'REAL', requiredDuringInsert: true);
+      'weight', aliasedName, true,
+      typeName: 'REAL', requiredDuringInsert: false);
   final VerificationMeta _isInjuredMeta = const VerificationMeta('isInjured');
   late final GeneratedColumn<bool?> isInjured = GeneratedColumn<bool?>(
       'is_injured', aliasedName, false,
@@ -336,14 +337,10 @@ class $BirdsTable extends Birds with TableInfo<$BirdsTable, Bird> {
     if (data.containsKey('type')) {
       context.handle(
           _typeMeta, type.isAcceptableOrUnknown(data['type']!, _typeMeta));
-    } else if (isInserting) {
-      context.missing(_typeMeta);
     }
     if (data.containsKey('weight')) {
       context.handle(_weightMeta,
           weight.isAcceptableOrUnknown(data['weight']!, _weightMeta));
-    } else if (isInserting) {
-      context.missing(_weightMeta);
     }
     if (data.containsKey('is_injured')) {
       context.handle(_isInjuredMeta,
@@ -377,8 +374,8 @@ class $BirdsTable extends Birds with TableInfo<$BirdsTable, Bird> {
 class Reserve extends DataClass implements Insertable<Reserve> {
   final int id;
   final String name;
-  final String description;
-  Reserve({required this.id, required this.name, required this.description});
+  final String? description;
+  Reserve({required this.id, required this.name, this.description});
   factory Reserve.fromData(Map<String, dynamic> data, GeneratedDatabase db,
       {String? prefix}) {
     final effectivePrefix = prefix ?? '';
@@ -388,7 +385,7 @@ class Reserve extends DataClass implements Insertable<Reserve> {
       name: const StringType()
           .mapFromDatabaseResponse(data['${effectivePrefix}name'])!,
       description: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}description'])!,
+          .mapFromDatabaseResponse(data['${effectivePrefix}description']),
     );
   }
   @override
@@ -396,7 +393,9 @@ class Reserve extends DataClass implements Insertable<Reserve> {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
     map['name'] = Variable<String>(name);
-    map['description'] = Variable<String>(description);
+    if (!nullToAbsent || description != null) {
+      map['description'] = Variable<String?>(description);
+    }
     return map;
   }
 
@@ -404,7 +403,9 @@ class Reserve extends DataClass implements Insertable<Reserve> {
     return ReservesCompanion(
       id: Value(id),
       name: Value(name),
-      description: Value(description),
+      description: description == null && nullToAbsent
+          ? const Value.absent()
+          : Value(description),
     );
   }
 
@@ -414,7 +415,7 @@ class Reserve extends DataClass implements Insertable<Reserve> {
     return Reserve(
       id: serializer.fromJson<int>(json['id']),
       name: serializer.fromJson<String>(json['name']),
-      description: serializer.fromJson<String>(json['description']),
+      description: serializer.fromJson<String?>(json['description']),
     );
   }
   @override
@@ -423,7 +424,7 @@ class Reserve extends DataClass implements Insertable<Reserve> {
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
       'name': serializer.toJson<String>(name),
-      'description': serializer.toJson<String>(description),
+      'description': serializer.toJson<String?>(description),
     };
   }
 
@@ -457,7 +458,7 @@ class Reserve extends DataClass implements Insertable<Reserve> {
 class ReservesCompanion extends UpdateCompanion<Reserve> {
   final Value<int> id;
   final Value<String> name;
-  final Value<String> description;
+  final Value<String?> description;
   const ReservesCompanion({
     this.id = const Value.absent(),
     this.name = const Value.absent(),
@@ -466,13 +467,12 @@ class ReservesCompanion extends UpdateCompanion<Reserve> {
   ReservesCompanion.insert({
     this.id = const Value.absent(),
     required String name,
-    required String description,
-  })  : name = Value(name),
-        description = Value(description);
+    this.description = const Value.absent(),
+  }) : name = Value(name);
   static Insertable<Reserve> custom({
     Expression<int>? id,
     Expression<String>? name,
-    Expression<String>? description,
+    Expression<String?>? description,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -482,7 +482,7 @@ class ReservesCompanion extends UpdateCompanion<Reserve> {
   }
 
   ReservesCompanion copyWith(
-      {Value<int>? id, Value<String>? name, Value<String>? description}) {
+      {Value<int>? id, Value<String>? name, Value<String?>? description}) {
     return ReservesCompanion(
       id: id ?? this.id,
       name: name ?? this.name,
@@ -500,7 +500,7 @@ class ReservesCompanion extends UpdateCompanion<Reserve> {
       map['name'] = Variable<String>(name.value);
     }
     if (description.present) {
-      map['description'] = Variable<String>(description.value);
+      map['description'] = Variable<String?>(description.value);
     }
     return map;
   }
@@ -529,18 +529,16 @@ class $ReservesTable extends Reserves with TableInfo<$ReservesTable, Reserve> {
   final VerificationMeta _nameMeta = const VerificationMeta('name');
   late final GeneratedColumn<String?> name = GeneratedColumn<String?>(
       'name', aliasedName, false,
-      additionalChecks:
-          GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 30),
+      additionalChecks: GeneratedColumn.checkTextLength(),
       typeName: 'TEXT',
       requiredDuringInsert: true);
   final VerificationMeta _descriptionMeta =
       const VerificationMeta('description');
   late final GeneratedColumn<String?> description = GeneratedColumn<String?>(
-      'description', aliasedName, false,
-      additionalChecks: GeneratedColumn.checkTextLength(
-          minTextLength: 10, maxTextLength: 300),
+      'description', aliasedName, true,
+      additionalChecks: GeneratedColumn.checkTextLength(),
       typeName: 'TEXT',
-      requiredDuringInsert: true);
+      requiredDuringInsert: false);
   @override
   List<GeneratedColumn> get $columns => [id, name, description];
   @override
@@ -566,8 +564,6 @@ class $ReservesTable extends Reserves with TableInfo<$ReservesTable, Reserve> {
           _descriptionMeta,
           description.isAcceptableOrUnknown(
               data['description']!, _descriptionMeta));
-    } else if (isInserting) {
-      context.missing(_descriptionMeta);
     }
     return context;
   }

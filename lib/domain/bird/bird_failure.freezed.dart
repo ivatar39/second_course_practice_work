@@ -27,6 +27,12 @@ class _$BirdFailureTearOff {
   WrongId wrongId() {
     return const WrongId();
   }
+
+  UnexpectedFailure unexpectedFailure(String? message) {
+    return UnexpectedFailure(
+      message,
+    );
+  }
 }
 
 /// @nodoc
@@ -39,6 +45,7 @@ mixin _$BirdFailure {
     required TResult Function() nameTooLong,
     required TResult Function() notNumber,
     required TResult Function() wrongId,
+    required TResult Function(String? message) unexpectedFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,6 +53,7 @@ mixin _$BirdFailure {
     TResult Function()? nameTooLong,
     TResult Function()? notNumber,
     TResult Function()? wrongId,
+    TResult Function(String? message)? unexpectedFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +62,7 @@ mixin _$BirdFailure {
     required TResult Function(NameTooLong value) nameTooLong,
     required TResult Function(NotNumber value) notNumber,
     required TResult Function(WrongId value) wrongId,
+    required TResult Function(UnexpectedFailure value) unexpectedFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +70,7 @@ mixin _$BirdFailure {
     TResult Function(NameTooLong value)? nameTooLong,
     TResult Function(NotNumber value)? notNumber,
     TResult Function(WrongId value)? wrongId,
+    TResult Function(UnexpectedFailure value)? unexpectedFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -130,6 +140,7 @@ class _$NameTooLong with DiagnosticableTreeMixin implements NameTooLong {
     required TResult Function() nameTooLong,
     required TResult Function() notNumber,
     required TResult Function() wrongId,
+    required TResult Function(String? message) unexpectedFailure,
   }) {
     return nameTooLong();
   }
@@ -140,6 +151,7 @@ class _$NameTooLong with DiagnosticableTreeMixin implements NameTooLong {
     TResult Function()? nameTooLong,
     TResult Function()? notNumber,
     TResult Function()? wrongId,
+    TResult Function(String? message)? unexpectedFailure,
     required TResult orElse(),
   }) {
     if (nameTooLong != null) {
@@ -154,6 +166,7 @@ class _$NameTooLong with DiagnosticableTreeMixin implements NameTooLong {
     required TResult Function(NameTooLong value) nameTooLong,
     required TResult Function(NotNumber value) notNumber,
     required TResult Function(WrongId value) wrongId,
+    required TResult Function(UnexpectedFailure value) unexpectedFailure,
   }) {
     return nameTooLong(this);
   }
@@ -164,6 +177,7 @@ class _$NameTooLong with DiagnosticableTreeMixin implements NameTooLong {
     TResult Function(NameTooLong value)? nameTooLong,
     TResult Function(NotNumber value)? notNumber,
     TResult Function(WrongId value)? wrongId,
+    TResult Function(UnexpectedFailure value)? unexpectedFailure,
     required TResult orElse(),
   }) {
     if (nameTooLong != null) {
@@ -223,6 +237,7 @@ class _$NotNumber with DiagnosticableTreeMixin implements NotNumber {
     required TResult Function() nameTooLong,
     required TResult Function() notNumber,
     required TResult Function() wrongId,
+    required TResult Function(String? message) unexpectedFailure,
   }) {
     return notNumber();
   }
@@ -233,6 +248,7 @@ class _$NotNumber with DiagnosticableTreeMixin implements NotNumber {
     TResult Function()? nameTooLong,
     TResult Function()? notNumber,
     TResult Function()? wrongId,
+    TResult Function(String? message)? unexpectedFailure,
     required TResult orElse(),
   }) {
     if (notNumber != null) {
@@ -247,6 +263,7 @@ class _$NotNumber with DiagnosticableTreeMixin implements NotNumber {
     required TResult Function(NameTooLong value) nameTooLong,
     required TResult Function(NotNumber value) notNumber,
     required TResult Function(WrongId value) wrongId,
+    required TResult Function(UnexpectedFailure value) unexpectedFailure,
   }) {
     return notNumber(this);
   }
@@ -257,6 +274,7 @@ class _$NotNumber with DiagnosticableTreeMixin implements NotNumber {
     TResult Function(NameTooLong value)? nameTooLong,
     TResult Function(NotNumber value)? notNumber,
     TResult Function(WrongId value)? wrongId,
+    TResult Function(UnexpectedFailure value)? unexpectedFailure,
     required TResult orElse(),
   }) {
     if (notNumber != null) {
@@ -316,6 +334,7 @@ class _$WrongId with DiagnosticableTreeMixin implements WrongId {
     required TResult Function() nameTooLong,
     required TResult Function() notNumber,
     required TResult Function() wrongId,
+    required TResult Function(String? message) unexpectedFailure,
   }) {
     return wrongId();
   }
@@ -326,6 +345,7 @@ class _$WrongId with DiagnosticableTreeMixin implements WrongId {
     TResult Function()? nameTooLong,
     TResult Function()? notNumber,
     TResult Function()? wrongId,
+    TResult Function(String? message)? unexpectedFailure,
     required TResult orElse(),
   }) {
     if (wrongId != null) {
@@ -340,6 +360,7 @@ class _$WrongId with DiagnosticableTreeMixin implements WrongId {
     required TResult Function(NameTooLong value) nameTooLong,
     required TResult Function(NotNumber value) notNumber,
     required TResult Function(WrongId value) wrongId,
+    required TResult Function(UnexpectedFailure value) unexpectedFailure,
   }) {
     return wrongId(this);
   }
@@ -350,6 +371,7 @@ class _$WrongId with DiagnosticableTreeMixin implements WrongId {
     TResult Function(NameTooLong value)? nameTooLong,
     TResult Function(NotNumber value)? notNumber,
     TResult Function(WrongId value)? wrongId,
+    TResult Function(UnexpectedFailure value)? unexpectedFailure,
     required TResult orElse(),
   }) {
     if (wrongId != null) {
@@ -361,4 +383,138 @@ class _$WrongId with DiagnosticableTreeMixin implements WrongId {
 
 abstract class WrongId implements BirdFailure {
   const factory WrongId() = _$WrongId;
+}
+
+/// @nodoc
+abstract class $UnexpectedFailureCopyWith<$Res> {
+  factory $UnexpectedFailureCopyWith(
+          UnexpectedFailure value, $Res Function(UnexpectedFailure) then) =
+      _$UnexpectedFailureCopyWithImpl<$Res>;
+  $Res call({String? message});
+}
+
+/// @nodoc
+class _$UnexpectedFailureCopyWithImpl<$Res>
+    extends _$BirdFailureCopyWithImpl<$Res>
+    implements $UnexpectedFailureCopyWith<$Res> {
+  _$UnexpectedFailureCopyWithImpl(
+      UnexpectedFailure _value, $Res Function(UnexpectedFailure) _then)
+      : super(_value, (v) => _then(v as UnexpectedFailure));
+
+  @override
+  UnexpectedFailure get _value => super._value as UnexpectedFailure;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(UnexpectedFailure(
+      message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UnexpectedFailure
+    with DiagnosticableTreeMixin
+    implements UnexpectedFailure {
+  const _$UnexpectedFailure(this.message);
+
+  @override
+  final String? message;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'BirdFailure.unexpectedFailure(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'BirdFailure.unexpectedFailure'))
+      ..add(DiagnosticsProperty('message', message));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is UnexpectedFailure &&
+            (identical(other.message, message) ||
+                const DeepCollectionEquality().equals(other.message, message)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+
+  @JsonKey(ignore: true)
+  @override
+  $UnexpectedFailureCopyWith<UnexpectedFailure> get copyWith =>
+      _$UnexpectedFailureCopyWithImpl<UnexpectedFailure>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() nameTooLong,
+    required TResult Function() notNumber,
+    required TResult Function() wrongId,
+    required TResult Function(String? message) unexpectedFailure,
+  }) {
+    return unexpectedFailure(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? nameTooLong,
+    TResult Function()? notNumber,
+    TResult Function()? wrongId,
+    TResult Function(String? message)? unexpectedFailure,
+    required TResult orElse(),
+  }) {
+    if (unexpectedFailure != null) {
+      return unexpectedFailure(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NameTooLong value) nameTooLong,
+    required TResult Function(NotNumber value) notNumber,
+    required TResult Function(WrongId value) wrongId,
+    required TResult Function(UnexpectedFailure value) unexpectedFailure,
+  }) {
+    return unexpectedFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NameTooLong value)? nameTooLong,
+    TResult Function(NotNumber value)? notNumber,
+    TResult Function(WrongId value)? wrongId,
+    TResult Function(UnexpectedFailure value)? unexpectedFailure,
+    required TResult orElse(),
+  }) {
+    if (unexpectedFailure != null) {
+      return unexpectedFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UnexpectedFailure implements BirdFailure {
+  const factory UnexpectedFailure(String? message) = _$UnexpectedFailure;
+
+  String? get message => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $UnexpectedFailureCopyWith<UnexpectedFailure> get copyWith =>
+      throw _privateConstructorUsedError;
 }

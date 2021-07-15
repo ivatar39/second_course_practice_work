@@ -8,5 +8,5 @@ class BirdActorState with _$BirdActorState {
 
   const factory BirdActorState.actionFailure(BirdFailure failure) = ActionFailure;
 
-  const factory BirdActorState.actionCompleted() = ActionCompleted;
+  const factory BirdActorState.actionCompleted(int birdsDeleted) = ActionCompleted;
 }

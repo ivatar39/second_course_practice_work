@@ -9,6 +9,7 @@ import 'package:meta/meta.dart';
 import 'package:second_course_practice_work/data/local_data_source.dart';
 import 'package:second_course_practice_work/domain/bird/bird_failure.dart';
 import 'package:second_course_practice_work/domain/bird/bird_repository.dart';
+import 'package:second_course_practice_work/ui/core/translations.dart';
 
 part 'birds_watcher_bloc.freezed.dart';
 part 'birds_watcher_event.dart';
@@ -39,6 +40,21 @@ class BirdsWatcherBloc extends Bloc<BirdsWatcherEvent, BirdsWatcherState> {
           (f) => BirdsWatcherState.loadFailure(f),
           (birds) => BirdsWatcherState.loadSuccess(birds),
         );
+      },
+      chosenBirdsByName: (e) async* {
+        yield const BirdsWatcherState.loadInProgress();
+        final birds = await _birdRepository.getBirdsByName(e.name);
+        yield BirdsWatcherState.queryLoaded(birds, birdsByName);
+      },
+      chosenReservesWithBirds: (_) async* {
+        yield const BirdsWatcherState.loadInProgress();
+        final chosenReservesWithBirds = await _birdRepository.getReservesWithBirds();
+        yield BirdsWatcherState.queryLoaded(chosenReservesWithBirds, reservesWithAverageWeightsAndBirds);
+      },
+      chosenReservesWithInjuredBirds: (_) async* {
+        yield const BirdsWatcherState.loadInProgress();
+        final chosenReservesWithInjuredBirds = await _birdRepository.getReservesWithInjuredBirds();
+        yield BirdsWatcherState.queryLoaded(chosenReservesWithInjuredBirds, reservesWithInjuredBirds);
       },
     );
   }

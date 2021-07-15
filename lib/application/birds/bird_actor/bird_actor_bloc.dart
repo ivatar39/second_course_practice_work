@@ -27,10 +27,9 @@ class BirdActorBloc extends Bloc<BirdActorEvent, BirdActorState> {
       birdsDeleted: (e) async* {
         yield const BirdActorState.actionInProgress();
         final failureOrDeleted = await _birdRepository.deleteBirds(e.birds);
-        print(failureOrDeleted);
         yield failureOrDeleted.fold(
           (failure) => BirdActorState.actionFailure(failure),
-          (_) => const BirdActorState.actionCompleted(),
+          (_) => BirdActorState.actionCompleted(e.birds.length),
         );
       },
     );

@@ -25,6 +25,7 @@ class BirdsOverviewBody extends StatelessWidget {
             },
           ),
           loadFailure: (state) => Center(child: Text(state.failure.toString())),
+          queryLoaded: (state) => Container(),
         );
       },
     );

@@ -26,6 +26,20 @@ class _$BirdsWatcherEventTearOff {
       failureOrBirds,
     );
   }
+
+  ChosenBirdsByName chosenBirdsByName(String name) {
+    return ChosenBirdsByName(
+      name,
+    );
+  }
+
+  ChosenReservesWithInjuredBirds chosenReservesWithInjuredBirds() {
+    return const ChosenReservesWithInjuredBirds();
+  }
+
+  ChosenReservesWithBirds chosenReservesWithBirds() {
+    return const ChosenReservesWithBirds();
+  }
 }
 
 /// @nodoc
@@ -39,6 +53,9 @@ mixin _$BirdsWatcherEvent {
     required TResult Function(
             Either<BirdFailure, Iterable<Bird>> failureOrBirds)
         birdsReceived,
+    required TResult Function(String name) chosenBirdsByName,
+    required TResult Function() chosenReservesWithInjuredBirds,
+    required TResult Function() chosenReservesWithBirds,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,6 +63,9 @@ mixin _$BirdsWatcherEvent {
     TResult Function()? watchAllStarted,
     TResult Function(Either<BirdFailure, Iterable<Bird>> failureOrBirds)?
         birdsReceived,
+    TResult Function(String name)? chosenBirdsByName,
+    TResult Function()? chosenReservesWithInjuredBirds,
+    TResult Function()? chosenReservesWithBirds,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -53,12 +73,21 @@ mixin _$BirdsWatcherEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(WatchAllStarted value) watchAllStarted,
     required TResult Function(BirdsReceived value) birdsReceived,
+    required TResult Function(ChosenBirdsByName value) chosenBirdsByName,
+    required TResult Function(ChosenReservesWithInjuredBirds value)
+        chosenReservesWithInjuredBirds,
+    required TResult Function(ChosenReservesWithBirds value)
+        chosenReservesWithBirds,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(WatchAllStarted value)? watchAllStarted,
     TResult Function(BirdsReceived value)? birdsReceived,
+    TResult Function(ChosenBirdsByName value)? chosenBirdsByName,
+    TResult Function(ChosenReservesWithInjuredBirds value)?
+        chosenReservesWithInjuredBirds,
+    TResult Function(ChosenReservesWithBirds value)? chosenReservesWithBirds,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -134,6 +163,9 @@ class _$WatchAllStarted
     required TResult Function(
             Either<BirdFailure, Iterable<Bird>> failureOrBirds)
         birdsReceived,
+    required TResult Function(String name) chosenBirdsByName,
+    required TResult Function() chosenReservesWithInjuredBirds,
+    required TResult Function() chosenReservesWithBirds,
   }) {
     return watchAllStarted();
   }
@@ -144,6 +176,9 @@ class _$WatchAllStarted
     TResult Function()? watchAllStarted,
     TResult Function(Either<BirdFailure, Iterable<Bird>> failureOrBirds)?
         birdsReceived,
+    TResult Function(String name)? chosenBirdsByName,
+    TResult Function()? chosenReservesWithInjuredBirds,
+    TResult Function()? chosenReservesWithBirds,
     required TResult orElse(),
   }) {
     if (watchAllStarted != null) {
@@ -157,6 +192,11 @@ class _$WatchAllStarted
   TResult map<TResult extends Object?>({
     required TResult Function(WatchAllStarted value) watchAllStarted,
     required TResult Function(BirdsReceived value) birdsReceived,
+    required TResult Function(ChosenBirdsByName value) chosenBirdsByName,
+    required TResult Function(ChosenReservesWithInjuredBirds value)
+        chosenReservesWithInjuredBirds,
+    required TResult Function(ChosenReservesWithBirds value)
+        chosenReservesWithBirds,
   }) {
     return watchAllStarted(this);
   }
@@ -166,6 +206,10 @@ class _$WatchAllStarted
   TResult maybeMap<TResult extends Object?>({
     TResult Function(WatchAllStarted value)? watchAllStarted,
     TResult Function(BirdsReceived value)? birdsReceived,
+    TResult Function(ChosenBirdsByName value)? chosenBirdsByName,
+    TResult Function(ChosenReservesWithInjuredBirds value)?
+        chosenReservesWithInjuredBirds,
+    TResult Function(ChosenReservesWithBirds value)? chosenReservesWithBirds,
     required TResult orElse(),
   }) {
     if (watchAllStarted != null) {
@@ -258,6 +302,9 @@ class _$BirdsReceived with DiagnosticableTreeMixin implements BirdsReceived {
     required TResult Function(
             Either<BirdFailure, Iterable<Bird>> failureOrBirds)
         birdsReceived,
+    required TResult Function(String name) chosenBirdsByName,
+    required TResult Function() chosenReservesWithInjuredBirds,
+    required TResult Function() chosenReservesWithBirds,
   }) {
     return birdsReceived(failureOrBirds);
   }
@@ -268,6 +315,9 @@ class _$BirdsReceived with DiagnosticableTreeMixin implements BirdsReceived {
     TResult Function()? watchAllStarted,
     TResult Function(Either<BirdFailure, Iterable<Bird>> failureOrBirds)?
         birdsReceived,
+    TResult Function(String name)? chosenBirdsByName,
+    TResult Function()? chosenReservesWithInjuredBirds,
+    TResult Function()? chosenReservesWithBirds,
     required TResult orElse(),
   }) {
     if (birdsReceived != null) {
@@ -281,6 +331,11 @@ class _$BirdsReceived with DiagnosticableTreeMixin implements BirdsReceived {
   TResult map<TResult extends Object?>({
     required TResult Function(WatchAllStarted value) watchAllStarted,
     required TResult Function(BirdsReceived value) birdsReceived,
+    required TResult Function(ChosenBirdsByName value) chosenBirdsByName,
+    required TResult Function(ChosenReservesWithInjuredBirds value)
+        chosenReservesWithInjuredBirds,
+    required TResult Function(ChosenReservesWithBirds value)
+        chosenReservesWithBirds,
   }) {
     return birdsReceived(this);
   }
@@ -290,6 +345,10 @@ class _$BirdsReceived with DiagnosticableTreeMixin implements BirdsReceived {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(WatchAllStarted value)? watchAllStarted,
     TResult Function(BirdsReceived value)? birdsReceived,
+    TResult Function(ChosenBirdsByName value)? chosenBirdsByName,
+    TResult Function(ChosenReservesWithInjuredBirds value)?
+        chosenReservesWithInjuredBirds,
+    TResult Function(ChosenReservesWithBirds value)? chosenReservesWithBirds,
     required TResult orElse(),
   }) {
     if (birdsReceived != null) {
@@ -308,6 +367,382 @@ abstract class BirdsReceived implements BirdsWatcherEvent {
   @JsonKey(ignore: true)
   $BirdsReceivedCopyWith<BirdsReceived> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ChosenBirdsByNameCopyWith<$Res> {
+  factory $ChosenBirdsByNameCopyWith(
+          ChosenBirdsByName value, $Res Function(ChosenBirdsByName) then) =
+      _$ChosenBirdsByNameCopyWithImpl<$Res>;
+  $Res call({String name});
+}
+
+/// @nodoc
+class _$ChosenBirdsByNameCopyWithImpl<$Res>
+    extends _$BirdsWatcherEventCopyWithImpl<$Res>
+    implements $ChosenBirdsByNameCopyWith<$Res> {
+  _$ChosenBirdsByNameCopyWithImpl(
+      ChosenBirdsByName _value, $Res Function(ChosenBirdsByName) _then)
+      : super(_value, (v) => _then(v as ChosenBirdsByName));
+
+  @override
+  ChosenBirdsByName get _value => super._value as ChosenBirdsByName;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+  }) {
+    return _then(ChosenBirdsByName(
+      name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChosenBirdsByName
+    with DiagnosticableTreeMixin
+    implements ChosenBirdsByName {
+  const _$ChosenBirdsByName(this.name);
+
+  @override
+  final String name;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'BirdsWatcherEvent.chosenBirdsByName(name: $name)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'BirdsWatcherEvent.chosenBirdsByName'))
+      ..add(DiagnosticsProperty('name', name));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is ChosenBirdsByName &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(name);
+
+  @JsonKey(ignore: true)
+  @override
+  $ChosenBirdsByNameCopyWith<ChosenBirdsByName> get copyWith =>
+      _$ChosenBirdsByNameCopyWithImpl<ChosenBirdsByName>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() watchAllStarted,
+    required TResult Function(
+            Either<BirdFailure, Iterable<Bird>> failureOrBirds)
+        birdsReceived,
+    required TResult Function(String name) chosenBirdsByName,
+    required TResult Function() chosenReservesWithInjuredBirds,
+    required TResult Function() chosenReservesWithBirds,
+  }) {
+    return chosenBirdsByName(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? watchAllStarted,
+    TResult Function(Either<BirdFailure, Iterable<Bird>> failureOrBirds)?
+        birdsReceived,
+    TResult Function(String name)? chosenBirdsByName,
+    TResult Function()? chosenReservesWithInjuredBirds,
+    TResult Function()? chosenReservesWithBirds,
+    required TResult orElse(),
+  }) {
+    if (chosenBirdsByName != null) {
+      return chosenBirdsByName(name);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(WatchAllStarted value) watchAllStarted,
+    required TResult Function(BirdsReceived value) birdsReceived,
+    required TResult Function(ChosenBirdsByName value) chosenBirdsByName,
+    required TResult Function(ChosenReservesWithInjuredBirds value)
+        chosenReservesWithInjuredBirds,
+    required TResult Function(ChosenReservesWithBirds value)
+        chosenReservesWithBirds,
+  }) {
+    return chosenBirdsByName(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(WatchAllStarted value)? watchAllStarted,
+    TResult Function(BirdsReceived value)? birdsReceived,
+    TResult Function(ChosenBirdsByName value)? chosenBirdsByName,
+    TResult Function(ChosenReservesWithInjuredBirds value)?
+        chosenReservesWithInjuredBirds,
+    TResult Function(ChosenReservesWithBirds value)? chosenReservesWithBirds,
+    required TResult orElse(),
+  }) {
+    if (chosenBirdsByName != null) {
+      return chosenBirdsByName(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChosenBirdsByName implements BirdsWatcherEvent {
+  const factory ChosenBirdsByName(String name) = _$ChosenBirdsByName;
+
+  String get name => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ChosenBirdsByNameCopyWith<ChosenBirdsByName> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ChosenReservesWithInjuredBirdsCopyWith<$Res> {
+  factory $ChosenReservesWithInjuredBirdsCopyWith(
+          ChosenReservesWithInjuredBirds value,
+          $Res Function(ChosenReservesWithInjuredBirds) then) =
+      _$ChosenReservesWithInjuredBirdsCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$ChosenReservesWithInjuredBirdsCopyWithImpl<$Res>
+    extends _$BirdsWatcherEventCopyWithImpl<$Res>
+    implements $ChosenReservesWithInjuredBirdsCopyWith<$Res> {
+  _$ChosenReservesWithInjuredBirdsCopyWithImpl(
+      ChosenReservesWithInjuredBirds _value,
+      $Res Function(ChosenReservesWithInjuredBirds) _then)
+      : super(_value, (v) => _then(v as ChosenReservesWithInjuredBirds));
+
+  @override
+  ChosenReservesWithInjuredBirds get _value =>
+      super._value as ChosenReservesWithInjuredBirds;
+}
+
+/// @nodoc
+
+class _$ChosenReservesWithInjuredBirds
+    with DiagnosticableTreeMixin
+    implements ChosenReservesWithInjuredBirds {
+  const _$ChosenReservesWithInjuredBirds();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'BirdsWatcherEvent.chosenReservesWithInjuredBirds()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'BirdsWatcherEvent.chosenReservesWithInjuredBirds'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is ChosenReservesWithInjuredBirds);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() watchAllStarted,
+    required TResult Function(
+            Either<BirdFailure, Iterable<Bird>> failureOrBirds)
+        birdsReceived,
+    required TResult Function(String name) chosenBirdsByName,
+    required TResult Function() chosenReservesWithInjuredBirds,
+    required TResult Function() chosenReservesWithBirds,
+  }) {
+    return chosenReservesWithInjuredBirds();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? watchAllStarted,
+    TResult Function(Either<BirdFailure, Iterable<Bird>> failureOrBirds)?
+        birdsReceived,
+    TResult Function(String name)? chosenBirdsByName,
+    TResult Function()? chosenReservesWithInjuredBirds,
+    TResult Function()? chosenReservesWithBirds,
+    required TResult orElse(),
+  }) {
+    if (chosenReservesWithInjuredBirds != null) {
+      return chosenReservesWithInjuredBirds();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(WatchAllStarted value) watchAllStarted,
+    required TResult Function(BirdsReceived value) birdsReceived,
+    required TResult Function(ChosenBirdsByName value) chosenBirdsByName,
+    required TResult Function(ChosenReservesWithInjuredBirds value)
+        chosenReservesWithInjuredBirds,
+    required TResult Function(ChosenReservesWithBirds value)
+        chosenReservesWithBirds,
+  }) {
+    return chosenReservesWithInjuredBirds(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(WatchAllStarted value)? watchAllStarted,
+    TResult Function(BirdsReceived value)? birdsReceived,
+    TResult Function(ChosenBirdsByName value)? chosenBirdsByName,
+    TResult Function(ChosenReservesWithInjuredBirds value)?
+        chosenReservesWithInjuredBirds,
+    TResult Function(ChosenReservesWithBirds value)? chosenReservesWithBirds,
+    required TResult orElse(),
+  }) {
+    if (chosenReservesWithInjuredBirds != null) {
+      return chosenReservesWithInjuredBirds(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChosenReservesWithInjuredBirds implements BirdsWatcherEvent {
+  const factory ChosenReservesWithInjuredBirds() =
+      _$ChosenReservesWithInjuredBirds;
+}
+
+/// @nodoc
+abstract class $ChosenReservesWithBirdsCopyWith<$Res> {
+  factory $ChosenReservesWithBirdsCopyWith(ChosenReservesWithBirds value,
+          $Res Function(ChosenReservesWithBirds) then) =
+      _$ChosenReservesWithBirdsCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$ChosenReservesWithBirdsCopyWithImpl<$Res>
+    extends _$BirdsWatcherEventCopyWithImpl<$Res>
+    implements $ChosenReservesWithBirdsCopyWith<$Res> {
+  _$ChosenReservesWithBirdsCopyWithImpl(ChosenReservesWithBirds _value,
+      $Res Function(ChosenReservesWithBirds) _then)
+      : super(_value, (v) => _then(v as ChosenReservesWithBirds));
+
+  @override
+  ChosenReservesWithBirds get _value => super._value as ChosenReservesWithBirds;
+}
+
+/// @nodoc
+
+class _$ChosenReservesWithBirds
+    with DiagnosticableTreeMixin
+    implements ChosenReservesWithBirds {
+  const _$ChosenReservesWithBirds();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'BirdsWatcherEvent.chosenReservesWithBirds()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'BirdsWatcherEvent.chosenReservesWithBirds'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is ChosenReservesWithBirds);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() watchAllStarted,
+    required TResult Function(
+            Either<BirdFailure, Iterable<Bird>> failureOrBirds)
+        birdsReceived,
+    required TResult Function(String name) chosenBirdsByName,
+    required TResult Function() chosenReservesWithInjuredBirds,
+    required TResult Function() chosenReservesWithBirds,
+  }) {
+    return chosenReservesWithBirds();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? watchAllStarted,
+    TResult Function(Either<BirdFailure, Iterable<Bird>> failureOrBirds)?
+        birdsReceived,
+    TResult Function(String name)? chosenBirdsByName,
+    TResult Function()? chosenReservesWithInjuredBirds,
+    TResult Function()? chosenReservesWithBirds,
+    required TResult orElse(),
+  }) {
+    if (chosenReservesWithBirds != null) {
+      return chosenReservesWithBirds();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(WatchAllStarted value) watchAllStarted,
+    required TResult Function(BirdsReceived value) birdsReceived,
+    required TResult Function(ChosenBirdsByName value) chosenBirdsByName,
+    required TResult Function(ChosenReservesWithInjuredBirds value)
+        chosenReservesWithInjuredBirds,
+    required TResult Function(ChosenReservesWithBirds value)
+        chosenReservesWithBirds,
+  }) {
+    return chosenReservesWithBirds(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(WatchAllStarted value)? watchAllStarted,
+    TResult Function(BirdsReceived value)? birdsReceived,
+    TResult Function(ChosenBirdsByName value)? chosenBirdsByName,
+    TResult Function(ChosenReservesWithInjuredBirds value)?
+        chosenReservesWithInjuredBirds,
+    TResult Function(ChosenReservesWithBirds value)? chosenReservesWithBirds,
+    required TResult orElse(),
+  }) {
+    if (chosenReservesWithBirds != null) {
+      return chosenReservesWithBirds(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChosenReservesWithBirds implements BirdsWatcherEvent {
+  const factory ChosenReservesWithBirds() = _$ChosenReservesWithBirds;
 }
 
 /// @nodoc
@@ -333,6 +768,13 @@ class _$BirdsWatcherStateTearOff {
       failure,
     );
   }
+
+  QueryLoaded queryLoaded(Iterable<dynamic> queryData, String queryName) {
+    return QueryLoaded(
+      queryData,
+      queryName,
+    );
+  }
 }
 
 /// @nodoc
@@ -346,6 +788,8 @@ mixin _$BirdsWatcherState {
     required TResult Function() loadInProgress,
     required TResult Function(Iterable<Bird> birds) loadSuccess,
     required TResult Function(BirdFailure failure) loadFailure,
+    required TResult Function(Iterable<dynamic> queryData, String queryName)
+        queryLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -354,6 +798,8 @@ mixin _$BirdsWatcherState {
     TResult Function()? loadInProgress,
     TResult Function(Iterable<Bird> birds)? loadSuccess,
     TResult Function(BirdFailure failure)? loadFailure,
+    TResult Function(Iterable<dynamic> queryData, String queryName)?
+        queryLoaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -363,6 +809,7 @@ mixin _$BirdsWatcherState {
     required TResult Function(LoadInProgress value) loadInProgress,
     required TResult Function(LoadSuccess value) loadSuccess,
     required TResult Function(LoadFailure value) loadFailure,
+    required TResult Function(QueryLoaded value) queryLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -371,6 +818,7 @@ mixin _$BirdsWatcherState {
     TResult Function(LoadInProgress value)? loadInProgress,
     TResult Function(LoadSuccess value)? loadSuccess,
     TResult Function(LoadFailure value)? loadFailure,
+    TResult Function(QueryLoaded value)? queryLoaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -440,6 +888,8 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     required TResult Function() loadInProgress,
     required TResult Function(Iterable<Bird> birds) loadSuccess,
     required TResult Function(BirdFailure failure) loadFailure,
+    required TResult Function(Iterable<dynamic> queryData, String queryName)
+        queryLoaded,
   }) {
     return initial();
   }
@@ -451,6 +901,8 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     TResult Function()? loadInProgress,
     TResult Function(Iterable<Bird> birds)? loadSuccess,
     TResult Function(BirdFailure failure)? loadFailure,
+    TResult Function(Iterable<dynamic> queryData, String queryName)?
+        queryLoaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -466,6 +918,7 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     required TResult Function(LoadInProgress value) loadInProgress,
     required TResult Function(LoadSuccess value) loadSuccess,
     required TResult Function(LoadFailure value) loadFailure,
+    required TResult Function(QueryLoaded value) queryLoaded,
   }) {
     return initial(this);
   }
@@ -477,6 +930,7 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     TResult Function(LoadInProgress value)? loadInProgress,
     TResult Function(LoadSuccess value)? loadSuccess,
     TResult Function(LoadFailure value)? loadFailure,
+    TResult Function(QueryLoaded value)? queryLoaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -541,6 +995,8 @@ class _$LoadInProgress with DiagnosticableTreeMixin implements LoadInProgress {
     required TResult Function() loadInProgress,
     required TResult Function(Iterable<Bird> birds) loadSuccess,
     required TResult Function(BirdFailure failure) loadFailure,
+    required TResult Function(Iterable<dynamic> queryData, String queryName)
+        queryLoaded,
   }) {
     return loadInProgress();
   }
@@ -552,6 +1008,8 @@ class _$LoadInProgress with DiagnosticableTreeMixin implements LoadInProgress {
     TResult Function()? loadInProgress,
     TResult Function(Iterable<Bird> birds)? loadSuccess,
     TResult Function(BirdFailure failure)? loadFailure,
+    TResult Function(Iterable<dynamic> queryData, String queryName)?
+        queryLoaded,
     required TResult orElse(),
   }) {
     if (loadInProgress != null) {
@@ -567,6 +1025,7 @@ class _$LoadInProgress with DiagnosticableTreeMixin implements LoadInProgress {
     required TResult Function(LoadInProgress value) loadInProgress,
     required TResult Function(LoadSuccess value) loadSuccess,
     required TResult Function(LoadFailure value) loadFailure,
+    required TResult Function(QueryLoaded value) queryLoaded,
   }) {
     return loadInProgress(this);
   }
@@ -578,6 +1037,7 @@ class _$LoadInProgress with DiagnosticableTreeMixin implements LoadInProgress {
     TResult Function(LoadInProgress value)? loadInProgress,
     TResult Function(LoadSuccess value)? loadSuccess,
     TResult Function(LoadFailure value)? loadFailure,
+    TResult Function(QueryLoaded value)? queryLoaded,
     required TResult orElse(),
   }) {
     if (loadInProgress != null) {
@@ -668,6 +1128,8 @@ class _$LoadSuccess with DiagnosticableTreeMixin implements LoadSuccess {
     required TResult Function() loadInProgress,
     required TResult Function(Iterable<Bird> birds) loadSuccess,
     required TResult Function(BirdFailure failure) loadFailure,
+    required TResult Function(Iterable<dynamic> queryData, String queryName)
+        queryLoaded,
   }) {
     return loadSuccess(birds);
   }
@@ -679,6 +1141,8 @@ class _$LoadSuccess with DiagnosticableTreeMixin implements LoadSuccess {
     TResult Function()? loadInProgress,
     TResult Function(Iterable<Bird> birds)? loadSuccess,
     TResult Function(BirdFailure failure)? loadFailure,
+    TResult Function(Iterable<dynamic> queryData, String queryName)?
+        queryLoaded,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
@@ -694,6 +1158,7 @@ class _$LoadSuccess with DiagnosticableTreeMixin implements LoadSuccess {
     required TResult Function(LoadInProgress value) loadInProgress,
     required TResult Function(LoadSuccess value) loadSuccess,
     required TResult Function(LoadFailure value) loadFailure,
+    required TResult Function(QueryLoaded value) queryLoaded,
   }) {
     return loadSuccess(this);
   }
@@ -705,6 +1170,7 @@ class _$LoadSuccess with DiagnosticableTreeMixin implements LoadSuccess {
     TResult Function(LoadInProgress value)? loadInProgress,
     TResult Function(LoadSuccess value)? loadSuccess,
     TResult Function(LoadFailure value)? loadFailure,
+    TResult Function(QueryLoaded value)? queryLoaded,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
@@ -809,6 +1275,8 @@ class _$LoadFailure with DiagnosticableTreeMixin implements LoadFailure {
     required TResult Function() loadInProgress,
     required TResult Function(Iterable<Bird> birds) loadSuccess,
     required TResult Function(BirdFailure failure) loadFailure,
+    required TResult Function(Iterable<dynamic> queryData, String queryName)
+        queryLoaded,
   }) {
     return loadFailure(failure);
   }
@@ -820,6 +1288,8 @@ class _$LoadFailure with DiagnosticableTreeMixin implements LoadFailure {
     TResult Function()? loadInProgress,
     TResult Function(Iterable<Bird> birds)? loadSuccess,
     TResult Function(BirdFailure failure)? loadFailure,
+    TResult Function(Iterable<dynamic> queryData, String queryName)?
+        queryLoaded,
     required TResult orElse(),
   }) {
     if (loadFailure != null) {
@@ -835,6 +1305,7 @@ class _$LoadFailure with DiagnosticableTreeMixin implements LoadFailure {
     required TResult Function(LoadInProgress value) loadInProgress,
     required TResult Function(LoadSuccess value) loadSuccess,
     required TResult Function(LoadFailure value) loadFailure,
+    required TResult Function(QueryLoaded value) queryLoaded,
   }) {
     return loadFailure(this);
   }
@@ -846,6 +1317,7 @@ class _$LoadFailure with DiagnosticableTreeMixin implements LoadFailure {
     TResult Function(LoadInProgress value)? loadInProgress,
     TResult Function(LoadSuccess value)? loadSuccess,
     TResult Function(LoadFailure value)? loadFailure,
+    TResult Function(QueryLoaded value)? queryLoaded,
     required TResult orElse(),
   }) {
     if (loadFailure != null) {
@@ -861,5 +1333,159 @@ abstract class LoadFailure implements BirdsWatcherState {
   BirdFailure get failure => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $LoadFailureCopyWith<LoadFailure> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $QueryLoadedCopyWith<$Res> {
+  factory $QueryLoadedCopyWith(
+          QueryLoaded value, $Res Function(QueryLoaded) then) =
+      _$QueryLoadedCopyWithImpl<$Res>;
+  $Res call({Iterable<dynamic> queryData, String queryName});
+}
+
+/// @nodoc
+class _$QueryLoadedCopyWithImpl<$Res>
+    extends _$BirdsWatcherStateCopyWithImpl<$Res>
+    implements $QueryLoadedCopyWith<$Res> {
+  _$QueryLoadedCopyWithImpl(
+      QueryLoaded _value, $Res Function(QueryLoaded) _then)
+      : super(_value, (v) => _then(v as QueryLoaded));
+
+  @override
+  QueryLoaded get _value => super._value as QueryLoaded;
+
+  @override
+  $Res call({
+    Object? queryData = freezed,
+    Object? queryName = freezed,
+  }) {
+    return _then(QueryLoaded(
+      queryData == freezed
+          ? _value.queryData
+          : queryData // ignore: cast_nullable_to_non_nullable
+              as Iterable<dynamic>,
+      queryName == freezed
+          ? _value.queryName
+          : queryName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$QueryLoaded with DiagnosticableTreeMixin implements QueryLoaded {
+  const _$QueryLoaded(this.queryData, this.queryName);
+
+  @override
+  final Iterable<dynamic> queryData;
+  @override
+  final String queryName;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'BirdsWatcherState.queryLoaded(queryData: $queryData, queryName: $queryName)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'BirdsWatcherState.queryLoaded'))
+      ..add(DiagnosticsProperty('queryData', queryData))
+      ..add(DiagnosticsProperty('queryName', queryName));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is QueryLoaded &&
+            (identical(other.queryData, queryData) ||
+                const DeepCollectionEquality()
+                    .equals(other.queryData, queryData)) &&
+            (identical(other.queryName, queryName) ||
+                const DeepCollectionEquality()
+                    .equals(other.queryName, queryName)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(queryData) ^
+      const DeepCollectionEquality().hash(queryName);
+
+  @JsonKey(ignore: true)
+  @override
+  $QueryLoadedCopyWith<QueryLoaded> get copyWith =>
+      _$QueryLoadedCopyWithImpl<QueryLoaded>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadInProgress,
+    required TResult Function(Iterable<Bird> birds) loadSuccess,
+    required TResult Function(BirdFailure failure) loadFailure,
+    required TResult Function(Iterable<dynamic> queryData, String queryName)
+        queryLoaded,
+  }) {
+    return queryLoaded(queryData, queryName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadInProgress,
+    TResult Function(Iterable<Bird> birds)? loadSuccess,
+    TResult Function(BirdFailure failure)? loadFailure,
+    TResult Function(Iterable<dynamic> queryData, String queryName)?
+        queryLoaded,
+    required TResult orElse(),
+  }) {
+    if (queryLoaded != null) {
+      return queryLoaded(queryData, queryName);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(LoadInProgress value) loadInProgress,
+    required TResult Function(LoadSuccess value) loadSuccess,
+    required TResult Function(LoadFailure value) loadFailure,
+    required TResult Function(QueryLoaded value) queryLoaded,
+  }) {
+    return queryLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(LoadInProgress value)? loadInProgress,
+    TResult Function(LoadSuccess value)? loadSuccess,
+    TResult Function(LoadFailure value)? loadFailure,
+    TResult Function(QueryLoaded value)? queryLoaded,
+    required TResult orElse(),
+  }) {
+    if (queryLoaded != null) {
+      return queryLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class QueryLoaded implements BirdsWatcherState {
+  const factory QueryLoaded(Iterable<dynamic> queryData, String queryName) =
+      _$QueryLoaded;
+
+  Iterable<dynamic> get queryData => throw _privateConstructorUsedError;
+  String get queryName => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $QueryLoadedCopyWith<QueryLoaded> get copyWith =>
       throw _privateConstructorUsedError;
 }

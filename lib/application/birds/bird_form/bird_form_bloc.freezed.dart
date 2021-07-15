@@ -16,8 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$BirdFormEventTearOff {
   const _$BirdFormEventTearOff();
 
-  Opened opened() {
-    return const Opened();
+  Initialized initialized(Option<Bird> initialBirdOption) {
+    return Initialized(
+      initialBirdOption,
+    );
   }
 
   NameChanged nameChanged(String nameStr) {
@@ -32,9 +34,9 @@ class _$BirdFormEventTearOff {
     );
   }
 
-  IsInjuredChanged isInjuredChanged({required bool isInured}) {
+  IsInjuredChanged isInjuredChanged({required bool isInjured}) {
     return IsInjuredChanged(
-      isInured: isInured,
+      isInjured: isInjured,
     );
   }
 
@@ -68,10 +70,10 @@ const $BirdFormEvent = _$BirdFormEventTearOff();
 mixin _$BirdFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() opened,
+    required TResult Function(Option<Bird> initialBirdOption) initialized,
     required TResult Function(String nameStr) nameChanged,
     required TResult Function(String typeStr) typeChanged,
-    required TResult Function(bool isInured) isInjuredChanged,
+    required TResult Function(bool isInjured) isInjuredChanged,
     required TResult Function(String weightStr) weightChanged,
     required TResult Function(String reserveIdStr) reserveIdChanged,
     required TResult Function(DateTime birthday) birthdayChanged,
@@ -80,10 +82,10 @@ mixin _$BirdFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? opened,
+    TResult Function(Option<Bird> initialBirdOption)? initialized,
     TResult Function(String nameStr)? nameChanged,
     TResult Function(String typeStr)? typeChanged,
-    TResult Function(bool isInured)? isInjuredChanged,
+    TResult Function(bool isInjured)? isInjuredChanged,
     TResult Function(String weightStr)? weightChanged,
     TResult Function(String reserveIdStr)? reserveIdChanged,
     TResult Function(DateTime birthday)? birthdayChanged,
@@ -93,7 +95,7 @@ mixin _$BirdFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Opened value) opened,
+    required TResult Function(Initialized value) initialized,
     required TResult Function(NameChanged value) nameChanged,
     required TResult Function(TypeChanged value) typeChanged,
     required TResult Function(IsInjuredChanged value) isInjuredChanged,
@@ -105,7 +107,7 @@ mixin _$BirdFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Opened value)? opened,
+    TResult Function(Initialized value)? initialized,
     TResult Function(NameChanged value)? nameChanged,
     TResult Function(TypeChanged value)? typeChanged,
     TResult Function(IsInjuredChanged value)? isInjuredChanged,
@@ -136,75 +138,106 @@ class _$BirdFormEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $OpenedCopyWith<$Res> {
-  factory $OpenedCopyWith(Opened value, $Res Function(Opened) then) =
-      _$OpenedCopyWithImpl<$Res>;
+abstract class $InitializedCopyWith<$Res> {
+  factory $InitializedCopyWith(
+          Initialized value, $Res Function(Initialized) then) =
+      _$InitializedCopyWithImpl<$Res>;
+  $Res call({Option<Bird> initialBirdOption});
 }
 
 /// @nodoc
-class _$OpenedCopyWithImpl<$Res> extends _$BirdFormEventCopyWithImpl<$Res>
-    implements $OpenedCopyWith<$Res> {
-  _$OpenedCopyWithImpl(Opened _value, $Res Function(Opened) _then)
-      : super(_value, (v) => _then(v as Opened));
+class _$InitializedCopyWithImpl<$Res> extends _$BirdFormEventCopyWithImpl<$Res>
+    implements $InitializedCopyWith<$Res> {
+  _$InitializedCopyWithImpl(
+      Initialized _value, $Res Function(Initialized) _then)
+      : super(_value, (v) => _then(v as Initialized));
 
   @override
-  Opened get _value => super._value as Opened;
+  Initialized get _value => super._value as Initialized;
+
+  @override
+  $Res call({
+    Object? initialBirdOption = freezed,
+  }) {
+    return _then(Initialized(
+      initialBirdOption == freezed
+          ? _value.initialBirdOption
+          : initialBirdOption // ignore: cast_nullable_to_non_nullable
+              as Option<Bird>,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$Opened with DiagnosticableTreeMixin implements Opened {
-  const _$Opened();
+class _$Initialized with DiagnosticableTreeMixin implements Initialized {
+  const _$Initialized(this.initialBirdOption);
+
+  @override
+  final Option<Bird> initialBirdOption;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'BirdFormEvent.opened()';
+    return 'BirdFormEvent.initialized(initialBirdOption: $initialBirdOption)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'BirdFormEvent.opened'));
+    properties
+      ..add(DiagnosticsProperty('type', 'BirdFormEvent.initialized'))
+      ..add(DiagnosticsProperty('initialBirdOption', initialBirdOption));
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is Opened);
+    return identical(this, other) ||
+        (other is Initialized &&
+            (identical(other.initialBirdOption, initialBirdOption) ||
+                const DeepCollectionEquality()
+                    .equals(other.initialBirdOption, initialBirdOption)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(initialBirdOption);
+
+  @JsonKey(ignore: true)
+  @override
+  $InitializedCopyWith<Initialized> get copyWith =>
+      _$InitializedCopyWithImpl<Initialized>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() opened,
+    required TResult Function(Option<Bird> initialBirdOption) initialized,
     required TResult Function(String nameStr) nameChanged,
     required TResult Function(String typeStr) typeChanged,
-    required TResult Function(bool isInured) isInjuredChanged,
+    required TResult Function(bool isInjured) isInjuredChanged,
     required TResult Function(String weightStr) weightChanged,
     required TResult Function(String reserveIdStr) reserveIdChanged,
     required TResult Function(DateTime birthday) birthdayChanged,
     required TResult Function() saved,
   }) {
-    return opened();
+    return initialized(initialBirdOption);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? opened,
+    TResult Function(Option<Bird> initialBirdOption)? initialized,
     TResult Function(String nameStr)? nameChanged,
     TResult Function(String typeStr)? typeChanged,
-    TResult Function(bool isInured)? isInjuredChanged,
+    TResult Function(bool isInjured)? isInjuredChanged,
     TResult Function(String weightStr)? weightChanged,
     TResult Function(String reserveIdStr)? reserveIdChanged,
     TResult Function(DateTime birthday)? birthdayChanged,
     TResult Function()? saved,
     required TResult orElse(),
   }) {
-    if (opened != null) {
-      return opened();
+    if (initialized != null) {
+      return initialized(initialBirdOption);
     }
     return orElse();
   }
@@ -212,7 +245,7 @@ class _$Opened with DiagnosticableTreeMixin implements Opened {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Opened value) opened,
+    required TResult Function(Initialized value) initialized,
     required TResult Function(NameChanged value) nameChanged,
     required TResult Function(TypeChanged value) typeChanged,
     required TResult Function(IsInjuredChanged value) isInjuredChanged,
@@ -221,13 +254,13 @@ class _$Opened with DiagnosticableTreeMixin implements Opened {
     required TResult Function(BirthdayChanged value) birthdayChanged,
     required TResult Function(Saved value) saved,
   }) {
-    return opened(this);
+    return initialized(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Opened value)? opened,
+    TResult Function(Initialized value)? initialized,
     TResult Function(NameChanged value)? nameChanged,
     TResult Function(TypeChanged value)? typeChanged,
     TResult Function(IsInjuredChanged value)? isInjuredChanged,
@@ -237,15 +270,20 @@ class _$Opened with DiagnosticableTreeMixin implements Opened {
     TResult Function(Saved value)? saved,
     required TResult orElse(),
   }) {
-    if (opened != null) {
-      return opened(this);
+    if (initialized != null) {
+      return initialized(this);
     }
     return orElse();
   }
 }
 
-abstract class Opened implements BirdFormEvent {
-  const factory Opened() = _$Opened;
+abstract class Initialized implements BirdFormEvent {
+  const factory Initialized(Option<Bird> initialBirdOption) = _$Initialized;
+
+  Option<Bird> get initialBirdOption => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $InitializedCopyWith<Initialized> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -320,10 +358,10 @@ class _$NameChanged with DiagnosticableTreeMixin implements NameChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() opened,
+    required TResult Function(Option<Bird> initialBirdOption) initialized,
     required TResult Function(String nameStr) nameChanged,
     required TResult Function(String typeStr) typeChanged,
-    required TResult Function(bool isInured) isInjuredChanged,
+    required TResult Function(bool isInjured) isInjuredChanged,
     required TResult Function(String weightStr) weightChanged,
     required TResult Function(String reserveIdStr) reserveIdChanged,
     required TResult Function(DateTime birthday) birthdayChanged,
@@ -335,10 +373,10 @@ class _$NameChanged with DiagnosticableTreeMixin implements NameChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? opened,
+    TResult Function(Option<Bird> initialBirdOption)? initialized,
     TResult Function(String nameStr)? nameChanged,
     TResult Function(String typeStr)? typeChanged,
-    TResult Function(bool isInured)? isInjuredChanged,
+    TResult Function(bool isInjured)? isInjuredChanged,
     TResult Function(String weightStr)? weightChanged,
     TResult Function(String reserveIdStr)? reserveIdChanged,
     TResult Function(DateTime birthday)? birthdayChanged,
@@ -354,7 +392,7 @@ class _$NameChanged with DiagnosticableTreeMixin implements NameChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Opened value) opened,
+    required TResult Function(Initialized value) initialized,
     required TResult Function(NameChanged value) nameChanged,
     required TResult Function(TypeChanged value) typeChanged,
     required TResult Function(IsInjuredChanged value) isInjuredChanged,
@@ -369,7 +407,7 @@ class _$NameChanged with DiagnosticableTreeMixin implements NameChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Opened value)? opened,
+    TResult Function(Initialized value)? initialized,
     TResult Function(NameChanged value)? nameChanged,
     TResult Function(TypeChanged value)? typeChanged,
     TResult Function(IsInjuredChanged value)? isInjuredChanged,
@@ -467,10 +505,10 @@ class _$TypeChanged with DiagnosticableTreeMixin implements TypeChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() opened,
+    required TResult Function(Option<Bird> initialBirdOption) initialized,
     required TResult Function(String nameStr) nameChanged,
     required TResult Function(String typeStr) typeChanged,
-    required TResult Function(bool isInured) isInjuredChanged,
+    required TResult Function(bool isInjured) isInjuredChanged,
     required TResult Function(String weightStr) weightChanged,
     required TResult Function(String reserveIdStr) reserveIdChanged,
     required TResult Function(DateTime birthday) birthdayChanged,
@@ -482,10 +520,10 @@ class _$TypeChanged with DiagnosticableTreeMixin implements TypeChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? opened,
+    TResult Function(Option<Bird> initialBirdOption)? initialized,
     TResult Function(String nameStr)? nameChanged,
     TResult Function(String typeStr)? typeChanged,
-    TResult Function(bool isInured)? isInjuredChanged,
+    TResult Function(bool isInjured)? isInjuredChanged,
     TResult Function(String weightStr)? weightChanged,
     TResult Function(String reserveIdStr)? reserveIdChanged,
     TResult Function(DateTime birthday)? birthdayChanged,
@@ -501,7 +539,7 @@ class _$TypeChanged with DiagnosticableTreeMixin implements TypeChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Opened value) opened,
+    required TResult Function(Initialized value) initialized,
     required TResult Function(NameChanged value) nameChanged,
     required TResult Function(TypeChanged value) typeChanged,
     required TResult Function(IsInjuredChanged value) isInjuredChanged,
@@ -516,7 +554,7 @@ class _$TypeChanged with DiagnosticableTreeMixin implements TypeChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Opened value)? opened,
+    TResult Function(Initialized value)? initialized,
     TResult Function(NameChanged value)? nameChanged,
     TResult Function(TypeChanged value)? typeChanged,
     TResult Function(IsInjuredChanged value)? isInjuredChanged,
@@ -547,7 +585,7 @@ abstract class $IsInjuredChangedCopyWith<$Res> {
   factory $IsInjuredChangedCopyWith(
           IsInjuredChanged value, $Res Function(IsInjuredChanged) then) =
       _$IsInjuredChangedCopyWithImpl<$Res>;
-  $Res call({bool isInured});
+  $Res call({bool isInjured});
 }
 
 /// @nodoc
@@ -563,12 +601,12 @@ class _$IsInjuredChangedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? isInured = freezed,
+    Object? isInjured = freezed,
   }) {
     return _then(IsInjuredChanged(
-      isInured: isInured == freezed
-          ? _value.isInured
-          : isInured // ignore: cast_nullable_to_non_nullable
+      isInjured: isInjured == freezed
+          ? _value.isInjured
+          : isInjured // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -579,14 +617,14 @@ class _$IsInjuredChangedCopyWithImpl<$Res>
 class _$IsInjuredChanged
     with DiagnosticableTreeMixin
     implements IsInjuredChanged {
-  const _$IsInjuredChanged({required this.isInured});
+  const _$IsInjuredChanged({required this.isInjured});
 
   @override
-  final bool isInured;
+  final bool isInjured;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'BirdFormEvent.isInjuredChanged(isInured: $isInured)';
+    return 'BirdFormEvent.isInjuredChanged(isInjured: $isInjured)';
   }
 
   @override
@@ -594,21 +632,21 @@ class _$IsInjuredChanged
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'BirdFormEvent.isInjuredChanged'))
-      ..add(DiagnosticsProperty('isInured', isInured));
+      ..add(DiagnosticsProperty('isInjured', isInjured));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is IsInjuredChanged &&
-            (identical(other.isInured, isInured) ||
+            (identical(other.isInjured, isInjured) ||
                 const DeepCollectionEquality()
-                    .equals(other.isInured, isInured)));
+                    .equals(other.isInjured, isInjured)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(isInured);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(isInjured);
 
   @JsonKey(ignore: true)
   @override
@@ -618,25 +656,25 @@ class _$IsInjuredChanged
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() opened,
+    required TResult Function(Option<Bird> initialBirdOption) initialized,
     required TResult Function(String nameStr) nameChanged,
     required TResult Function(String typeStr) typeChanged,
-    required TResult Function(bool isInured) isInjuredChanged,
+    required TResult Function(bool isInjured) isInjuredChanged,
     required TResult Function(String weightStr) weightChanged,
     required TResult Function(String reserveIdStr) reserveIdChanged,
     required TResult Function(DateTime birthday) birthdayChanged,
     required TResult Function() saved,
   }) {
-    return isInjuredChanged(isInured);
+    return isInjuredChanged(isInjured);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? opened,
+    TResult Function(Option<Bird> initialBirdOption)? initialized,
     TResult Function(String nameStr)? nameChanged,
     TResult Function(String typeStr)? typeChanged,
-    TResult Function(bool isInured)? isInjuredChanged,
+    TResult Function(bool isInjured)? isInjuredChanged,
     TResult Function(String weightStr)? weightChanged,
     TResult Function(String reserveIdStr)? reserveIdChanged,
     TResult Function(DateTime birthday)? birthdayChanged,
@@ -644,7 +682,7 @@ class _$IsInjuredChanged
     required TResult orElse(),
   }) {
     if (isInjuredChanged != null) {
-      return isInjuredChanged(isInured);
+      return isInjuredChanged(isInjured);
     }
     return orElse();
   }
@@ -652,7 +690,7 @@ class _$IsInjuredChanged
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Opened value) opened,
+    required TResult Function(Initialized value) initialized,
     required TResult Function(NameChanged value) nameChanged,
     required TResult Function(TypeChanged value) typeChanged,
     required TResult Function(IsInjuredChanged value) isInjuredChanged,
@@ -667,7 +705,7 @@ class _$IsInjuredChanged
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Opened value)? opened,
+    TResult Function(Initialized value)? initialized,
     TResult Function(NameChanged value)? nameChanged,
     TResult Function(TypeChanged value)? typeChanged,
     TResult Function(IsInjuredChanged value)? isInjuredChanged,
@@ -685,9 +723,10 @@ class _$IsInjuredChanged
 }
 
 abstract class IsInjuredChanged implements BirdFormEvent {
-  const factory IsInjuredChanged({required bool isInured}) = _$IsInjuredChanged;
+  const factory IsInjuredChanged({required bool isInjured}) =
+      _$IsInjuredChanged;
 
-  bool get isInured => throw _privateConstructorUsedError;
+  bool get isInjured => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $IsInjuredChangedCopyWith<IsInjuredChanged> get copyWith =>
       throw _privateConstructorUsedError;
@@ -767,10 +806,10 @@ class _$WeightChanged with DiagnosticableTreeMixin implements WeightChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() opened,
+    required TResult Function(Option<Bird> initialBirdOption) initialized,
     required TResult Function(String nameStr) nameChanged,
     required TResult Function(String typeStr) typeChanged,
-    required TResult Function(bool isInured) isInjuredChanged,
+    required TResult Function(bool isInjured) isInjuredChanged,
     required TResult Function(String weightStr) weightChanged,
     required TResult Function(String reserveIdStr) reserveIdChanged,
     required TResult Function(DateTime birthday) birthdayChanged,
@@ -782,10 +821,10 @@ class _$WeightChanged with DiagnosticableTreeMixin implements WeightChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? opened,
+    TResult Function(Option<Bird> initialBirdOption)? initialized,
     TResult Function(String nameStr)? nameChanged,
     TResult Function(String typeStr)? typeChanged,
-    TResult Function(bool isInured)? isInjuredChanged,
+    TResult Function(bool isInjured)? isInjuredChanged,
     TResult Function(String weightStr)? weightChanged,
     TResult Function(String reserveIdStr)? reserveIdChanged,
     TResult Function(DateTime birthday)? birthdayChanged,
@@ -801,7 +840,7 @@ class _$WeightChanged with DiagnosticableTreeMixin implements WeightChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Opened value) opened,
+    required TResult Function(Initialized value) initialized,
     required TResult Function(NameChanged value) nameChanged,
     required TResult Function(TypeChanged value) typeChanged,
     required TResult Function(IsInjuredChanged value) isInjuredChanged,
@@ -816,7 +855,7 @@ class _$WeightChanged with DiagnosticableTreeMixin implements WeightChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Opened value)? opened,
+    TResult Function(Initialized value)? initialized,
     TResult Function(NameChanged value)? nameChanged,
     TResult Function(TypeChanged value)? typeChanged,
     TResult Function(IsInjuredChanged value)? isInjuredChanged,
@@ -918,10 +957,10 @@ class _$ReserveIdChanged
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() opened,
+    required TResult Function(Option<Bird> initialBirdOption) initialized,
     required TResult Function(String nameStr) nameChanged,
     required TResult Function(String typeStr) typeChanged,
-    required TResult Function(bool isInured) isInjuredChanged,
+    required TResult Function(bool isInjured) isInjuredChanged,
     required TResult Function(String weightStr) weightChanged,
     required TResult Function(String reserveIdStr) reserveIdChanged,
     required TResult Function(DateTime birthday) birthdayChanged,
@@ -933,10 +972,10 @@ class _$ReserveIdChanged
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? opened,
+    TResult Function(Option<Bird> initialBirdOption)? initialized,
     TResult Function(String nameStr)? nameChanged,
     TResult Function(String typeStr)? typeChanged,
-    TResult Function(bool isInured)? isInjuredChanged,
+    TResult Function(bool isInjured)? isInjuredChanged,
     TResult Function(String weightStr)? weightChanged,
     TResult Function(String reserveIdStr)? reserveIdChanged,
     TResult Function(DateTime birthday)? birthdayChanged,
@@ -952,7 +991,7 @@ class _$ReserveIdChanged
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Opened value) opened,
+    required TResult Function(Initialized value) initialized,
     required TResult Function(NameChanged value) nameChanged,
     required TResult Function(TypeChanged value) typeChanged,
     required TResult Function(IsInjuredChanged value) isInjuredChanged,
@@ -967,7 +1006,7 @@ class _$ReserveIdChanged
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Opened value)? opened,
+    TResult Function(Initialized value)? initialized,
     TResult Function(NameChanged value)? nameChanged,
     TResult Function(TypeChanged value)? typeChanged,
     TResult Function(IsInjuredChanged value)? isInjuredChanged,
@@ -1069,10 +1108,10 @@ class _$BirthdayChanged
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() opened,
+    required TResult Function(Option<Bird> initialBirdOption) initialized,
     required TResult Function(String nameStr) nameChanged,
     required TResult Function(String typeStr) typeChanged,
-    required TResult Function(bool isInured) isInjuredChanged,
+    required TResult Function(bool isInjured) isInjuredChanged,
     required TResult Function(String weightStr) weightChanged,
     required TResult Function(String reserveIdStr) reserveIdChanged,
     required TResult Function(DateTime birthday) birthdayChanged,
@@ -1084,10 +1123,10 @@ class _$BirthdayChanged
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? opened,
+    TResult Function(Option<Bird> initialBirdOption)? initialized,
     TResult Function(String nameStr)? nameChanged,
     TResult Function(String typeStr)? typeChanged,
-    TResult Function(bool isInured)? isInjuredChanged,
+    TResult Function(bool isInjured)? isInjuredChanged,
     TResult Function(String weightStr)? weightChanged,
     TResult Function(String reserveIdStr)? reserveIdChanged,
     TResult Function(DateTime birthday)? birthdayChanged,
@@ -1103,7 +1142,7 @@ class _$BirthdayChanged
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Opened value) opened,
+    required TResult Function(Initialized value) initialized,
     required TResult Function(NameChanged value) nameChanged,
     required TResult Function(TypeChanged value) typeChanged,
     required TResult Function(IsInjuredChanged value) isInjuredChanged,
@@ -1118,7 +1157,7 @@ class _$BirthdayChanged
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Opened value)? opened,
+    TResult Function(Initialized value)? initialized,
     TResult Function(NameChanged value)? nameChanged,
     TResult Function(TypeChanged value)? typeChanged,
     TResult Function(IsInjuredChanged value)? isInjuredChanged,
@@ -1187,10 +1226,10 @@ class _$Saved with DiagnosticableTreeMixin implements Saved {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() opened,
+    required TResult Function(Option<Bird> initialBirdOption) initialized,
     required TResult Function(String nameStr) nameChanged,
     required TResult Function(String typeStr) typeChanged,
-    required TResult Function(bool isInured) isInjuredChanged,
+    required TResult Function(bool isInjured) isInjuredChanged,
     required TResult Function(String weightStr) weightChanged,
     required TResult Function(String reserveIdStr) reserveIdChanged,
     required TResult Function(DateTime birthday) birthdayChanged,
@@ -1202,10 +1241,10 @@ class _$Saved with DiagnosticableTreeMixin implements Saved {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? opened,
+    TResult Function(Option<Bird> initialBirdOption)? initialized,
     TResult Function(String nameStr)? nameChanged,
     TResult Function(String typeStr)? typeChanged,
-    TResult Function(bool isInured)? isInjuredChanged,
+    TResult Function(bool isInjured)? isInjuredChanged,
     TResult Function(String weightStr)? weightChanged,
     TResult Function(String reserveIdStr)? reserveIdChanged,
     TResult Function(DateTime birthday)? birthdayChanged,
@@ -1221,7 +1260,7 @@ class _$Saved with DiagnosticableTreeMixin implements Saved {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Opened value) opened,
+    required TResult Function(Initialized value) initialized,
     required TResult Function(NameChanged value) nameChanged,
     required TResult Function(TypeChanged value) typeChanged,
     required TResult Function(IsInjuredChanged value) isInjuredChanged,
@@ -1236,7 +1275,7 @@ class _$Saved with DiagnosticableTreeMixin implements Saved {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Opened value)? opened,
+    TResult Function(Initialized value)? initialized,
     TResult Function(NameChanged value)? nameChanged,
     TResult Function(TypeChanged value)? typeChanged,
     TResult Function(IsInjuredChanged value)? isInjuredChanged,
@@ -1262,27 +1301,21 @@ class _$BirdFormStateTearOff {
   const _$BirdFormStateTearOff();
 
   _BirdFormState call(
-      {required String name,
-      required String type,
-      required bool isInjured,
-      required double weight,
-      int? reserveId,
-      DateTime? birthday,
+      {required Bird bird,
       required bool isEditing,
       required bool isSaving,
+      required bool isLoading,
       required bool showErrorMessages,
+      required Iterable<Reserve> reserves,
       required Option<BirdFailure> failureOption,
       required Option<Either<BirdFailure, Unit>> saveFailureOrSuccessOption}) {
     return _BirdFormState(
-      name: name,
-      type: type,
-      isInjured: isInjured,
-      weight: weight,
-      reserveId: reserveId,
-      birthday: birthday,
+      bird: bird,
       isEditing: isEditing,
       isSaving: isSaving,
+      isLoading: isLoading,
       showErrorMessages: showErrorMessages,
+      reserves: reserves,
       failureOption: failureOption,
       saveFailureOrSuccessOption: saveFailureOrSuccessOption,
     );
@@ -1294,15 +1327,12 @@ const $BirdFormState = _$BirdFormStateTearOff();
 
 /// @nodoc
 mixin _$BirdFormState {
-  String get name => throw _privateConstructorUsedError;
-  String get type => throw _privateConstructorUsedError;
-  bool get isInjured => throw _privateConstructorUsedError;
-  double get weight => throw _privateConstructorUsedError;
-  int? get reserveId => throw _privateConstructorUsedError;
-  DateTime? get birthday => throw _privateConstructorUsedError;
+  Bird get bird => throw _privateConstructorUsedError;
   bool get isEditing => throw _privateConstructorUsedError;
   bool get isSaving => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
+  Iterable<Reserve> get reserves => throw _privateConstructorUsedError;
   Option<BirdFailure> get failureOption => throw _privateConstructorUsedError;
   Option<Either<BirdFailure, Unit>> get saveFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
@@ -1318,15 +1348,12 @@ abstract class $BirdFormStateCopyWith<$Res> {
           BirdFormState value, $Res Function(BirdFormState) then) =
       _$BirdFormStateCopyWithImpl<$Res>;
   $Res call(
-      {String name,
-      String type,
-      bool isInjured,
-      double weight,
-      int? reserveId,
-      DateTime? birthday,
+      {Bird bird,
       bool isEditing,
       bool isSaving,
+      bool isLoading,
       bool showErrorMessages,
+      Iterable<Reserve> reserves,
       Option<BirdFailure> failureOption,
       Option<Either<BirdFailure, Unit>> saveFailureOrSuccessOption});
 }
@@ -1342,43 +1369,20 @@ class _$BirdFormStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? name = freezed,
-    Object? type = freezed,
-    Object? isInjured = freezed,
-    Object? weight = freezed,
-    Object? reserveId = freezed,
-    Object? birthday = freezed,
+    Object? bird = freezed,
     Object? isEditing = freezed,
     Object? isSaving = freezed,
+    Object? isLoading = freezed,
     Object? showErrorMessages = freezed,
+    Object? reserves = freezed,
     Object? failureOption = freezed,
     Object? saveFailureOrSuccessOption = freezed,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      isInjured: isInjured == freezed
-          ? _value.isInjured
-          : isInjured // ignore: cast_nullable_to_non_nullable
-              as bool,
-      weight: weight == freezed
-          ? _value.weight
-          : weight // ignore: cast_nullable_to_non_nullable
-              as double,
-      reserveId: reserveId == freezed
-          ? _value.reserveId
-          : reserveId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      birthday: birthday == freezed
-          ? _value.birthday
-          : birthday // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+      bird: bird == freezed
+          ? _value.bird
+          : bird // ignore: cast_nullable_to_non_nullable
+              as Bird,
       isEditing: isEditing == freezed
           ? _value.isEditing
           : isEditing // ignore: cast_nullable_to_non_nullable
@@ -1387,10 +1391,18 @@ class _$BirdFormStateCopyWithImpl<$Res>
           ? _value.isSaving
           : isSaving // ignore: cast_nullable_to_non_nullable
               as bool,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
               as bool,
+      reserves: reserves == freezed
+          ? _value.reserves
+          : reserves // ignore: cast_nullable_to_non_nullable
+              as Iterable<Reserve>,
       failureOption: failureOption == freezed
           ? _value.failureOption
           : failureOption // ignore: cast_nullable_to_non_nullable
@@ -1411,15 +1423,12 @@ abstract class _$BirdFormStateCopyWith<$Res>
       __$BirdFormStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String name,
-      String type,
-      bool isInjured,
-      double weight,
-      int? reserveId,
-      DateTime? birthday,
+      {Bird bird,
       bool isEditing,
       bool isSaving,
+      bool isLoading,
       bool showErrorMessages,
+      Iterable<Reserve> reserves,
       Option<BirdFailure> failureOption,
       Option<Either<BirdFailure, Unit>> saveFailureOrSuccessOption});
 }
@@ -1437,43 +1446,20 @@ class __$BirdFormStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? name = freezed,
-    Object? type = freezed,
-    Object? isInjured = freezed,
-    Object? weight = freezed,
-    Object? reserveId = freezed,
-    Object? birthday = freezed,
+    Object? bird = freezed,
     Object? isEditing = freezed,
     Object? isSaving = freezed,
+    Object? isLoading = freezed,
     Object? showErrorMessages = freezed,
+    Object? reserves = freezed,
     Object? failureOption = freezed,
     Object? saveFailureOrSuccessOption = freezed,
   }) {
     return _then(_BirdFormState(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      isInjured: isInjured == freezed
-          ? _value.isInjured
-          : isInjured // ignore: cast_nullable_to_non_nullable
-              as bool,
-      weight: weight == freezed
-          ? _value.weight
-          : weight // ignore: cast_nullable_to_non_nullable
-              as double,
-      reserveId: reserveId == freezed
-          ? _value.reserveId
-          : reserveId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      birthday: birthday == freezed
-          ? _value.birthday
-          : birthday // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+      bird: bird == freezed
+          ? _value.bird
+          : bird // ignore: cast_nullable_to_non_nullable
+              as Bird,
       isEditing: isEditing == freezed
           ? _value.isEditing
           : isEditing // ignore: cast_nullable_to_non_nullable
@@ -1482,10 +1468,18 @@ class __$BirdFormStateCopyWithImpl<$Res>
           ? _value.isSaving
           : isSaving // ignore: cast_nullable_to_non_nullable
               as bool,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages // ignore: cast_nullable_to_non_nullable
               as bool,
+      reserves: reserves == freezed
+          ? _value.reserves
+          : reserves // ignore: cast_nullable_to_non_nullable
+              as Iterable<Reserve>,
       failureOption: failureOption == freezed
           ? _value.failureOption
           : failureOption // ignore: cast_nullable_to_non_nullable
@@ -1502,36 +1496,27 @@ class __$BirdFormStateCopyWithImpl<$Res>
 
 class _$_BirdFormState with DiagnosticableTreeMixin implements _BirdFormState {
   const _$_BirdFormState(
-      {required this.name,
-      required this.type,
-      required this.isInjured,
-      required this.weight,
-      this.reserveId,
-      this.birthday,
+      {required this.bird,
       required this.isEditing,
       required this.isSaving,
+      required this.isLoading,
       required this.showErrorMessages,
+      required this.reserves,
       required this.failureOption,
       required this.saveFailureOrSuccessOption});
 
   @override
-  final String name;
-  @override
-  final String type;
-  @override
-  final bool isInjured;
-  @override
-  final double weight;
-  @override
-  final int? reserveId;
-  @override
-  final DateTime? birthday;
+  final Bird bird;
   @override
   final bool isEditing;
   @override
   final bool isSaving;
   @override
+  final bool isLoading;
+  @override
   final bool showErrorMessages;
+  @override
+  final Iterable<Reserve> reserves;
   @override
   final Option<BirdFailure> failureOption;
   @override
@@ -1539,7 +1524,7 @@ class _$_BirdFormState with DiagnosticableTreeMixin implements _BirdFormState {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'BirdFormState(name: $name, type: $type, isInjured: $isInjured, weight: $weight, reserveId: $reserveId, birthday: $birthday, isEditing: $isEditing, isSaving: $isSaving, showErrorMessages: $showErrorMessages, failureOption: $failureOption, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
+    return 'BirdFormState(bird: $bird, isEditing: $isEditing, isSaving: $isSaving, isLoading: $isLoading, showErrorMessages: $showErrorMessages, reserves: $reserves, failureOption: $failureOption, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
   }
 
   @override
@@ -1547,15 +1532,12 @@ class _$_BirdFormState with DiagnosticableTreeMixin implements _BirdFormState {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'BirdFormState'))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('type', type))
-      ..add(DiagnosticsProperty('isInjured', isInjured))
-      ..add(DiagnosticsProperty('weight', weight))
-      ..add(DiagnosticsProperty('reserveId', reserveId))
-      ..add(DiagnosticsProperty('birthday', birthday))
+      ..add(DiagnosticsProperty('bird', bird))
       ..add(DiagnosticsProperty('isEditing', isEditing))
       ..add(DiagnosticsProperty('isSaving', isSaving))
+      ..add(DiagnosticsProperty('isLoading', isLoading))
       ..add(DiagnosticsProperty('showErrorMessages', showErrorMessages))
+      ..add(DiagnosticsProperty('reserves', reserves))
       ..add(DiagnosticsProperty('failureOption', failureOption))
       ..add(DiagnosticsProperty(
           'saveFailureOrSuccessOption', saveFailureOrSuccessOption));
@@ -1565,30 +1547,23 @@ class _$_BirdFormState with DiagnosticableTreeMixin implements _BirdFormState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _BirdFormState &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
-            (identical(other.isInjured, isInjured) ||
-                const DeepCollectionEquality()
-                    .equals(other.isInjured, isInjured)) &&
-            (identical(other.weight, weight) ||
-                const DeepCollectionEquality().equals(other.weight, weight)) &&
-            (identical(other.reserveId, reserveId) ||
-                const DeepCollectionEquality()
-                    .equals(other.reserveId, reserveId)) &&
-            (identical(other.birthday, birthday) ||
-                const DeepCollectionEquality()
-                    .equals(other.birthday, birthday)) &&
+            (identical(other.bird, bird) ||
+                const DeepCollectionEquality().equals(other.bird, bird)) &&
             (identical(other.isEditing, isEditing) ||
                 const DeepCollectionEquality()
                     .equals(other.isEditing, isEditing)) &&
             (identical(other.isSaving, isSaving) ||
                 const DeepCollectionEquality()
                     .equals(other.isSaving, isSaving)) &&
+            (identical(other.isLoading, isLoading) ||
+                const DeepCollectionEquality()
+                    .equals(other.isLoading, isLoading)) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
                 const DeepCollectionEquality()
                     .equals(other.showErrorMessages, showErrorMessages)) &&
+            (identical(other.reserves, reserves) ||
+                const DeepCollectionEquality()
+                    .equals(other.reserves, reserves)) &&
             (identical(other.failureOption, failureOption) ||
                 const DeepCollectionEquality()
                     .equals(other.failureOption, failureOption)) &&
@@ -1602,15 +1577,12 @@ class _$_BirdFormState with DiagnosticableTreeMixin implements _BirdFormState {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(type) ^
-      const DeepCollectionEquality().hash(isInjured) ^
-      const DeepCollectionEquality().hash(weight) ^
-      const DeepCollectionEquality().hash(reserveId) ^
-      const DeepCollectionEquality().hash(birthday) ^
+      const DeepCollectionEquality().hash(bird) ^
       const DeepCollectionEquality().hash(isEditing) ^
       const DeepCollectionEquality().hash(isSaving) ^
+      const DeepCollectionEquality().hash(isLoading) ^
       const DeepCollectionEquality().hash(showErrorMessages) ^
+      const DeepCollectionEquality().hash(reserves) ^
       const DeepCollectionEquality().hash(failureOption) ^
       const DeepCollectionEquality().hash(saveFailureOrSuccessOption);
 
@@ -1622,37 +1594,28 @@ class _$_BirdFormState with DiagnosticableTreeMixin implements _BirdFormState {
 
 abstract class _BirdFormState implements BirdFormState {
   const factory _BirdFormState(
-      {required String name,
-      required String type,
-      required bool isInjured,
-      required double weight,
-      int? reserveId,
-      DateTime? birthday,
+      {required Bird bird,
       required bool isEditing,
       required bool isSaving,
+      required bool isLoading,
       required bool showErrorMessages,
+      required Iterable<Reserve> reserves,
       required Option<BirdFailure> failureOption,
       required Option<Either<BirdFailure, Unit>>
           saveFailureOrSuccessOption}) = _$_BirdFormState;
 
   @override
-  String get name => throw _privateConstructorUsedError;
-  @override
-  String get type => throw _privateConstructorUsedError;
-  @override
-  bool get isInjured => throw _privateConstructorUsedError;
-  @override
-  double get weight => throw _privateConstructorUsedError;
-  @override
-  int? get reserveId => throw _privateConstructorUsedError;
-  @override
-  DateTime? get birthday => throw _privateConstructorUsedError;
+  Bird get bird => throw _privateConstructorUsedError;
   @override
   bool get isEditing => throw _privateConstructorUsedError;
   @override
   bool get isSaving => throw _privateConstructorUsedError;
   @override
+  bool get isLoading => throw _privateConstructorUsedError;
+  @override
   bool get showErrorMessages => throw _privateConstructorUsedError;
+  @override
+  Iterable<Reserve> get reserves => throw _privateConstructorUsedError;
   @override
   Option<BirdFailure> get failureOption => throw _privateConstructorUsedError;
   @override

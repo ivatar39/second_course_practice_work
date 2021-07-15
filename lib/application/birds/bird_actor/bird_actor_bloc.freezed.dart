@@ -230,8 +230,10 @@ class _$BirdActorStateTearOff {
     );
   }
 
-  ActionCompleted actionCompleted() {
-    return const ActionCompleted();
+  ActionCompleted actionCompleted(int birdsDeleted) {
+    return ActionCompleted(
+      birdsDeleted,
+    );
   }
 }
 
@@ -245,7 +247,7 @@ mixin _$BirdActorState {
     required TResult Function() initial,
     required TResult Function() actionInProgress,
     required TResult Function(BirdFailure failure) actionFailure,
-    required TResult Function() actionCompleted,
+    required TResult Function(int birdsDeleted) actionCompleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -253,7 +255,7 @@ mixin _$BirdActorState {
     TResult Function()? initial,
     TResult Function()? actionInProgress,
     TResult Function(BirdFailure failure)? actionFailure,
-    TResult Function()? actionCompleted,
+    TResult Function(int birdsDeleted)? actionCompleted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -339,7 +341,7 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     required TResult Function() initial,
     required TResult Function() actionInProgress,
     required TResult Function(BirdFailure failure) actionFailure,
-    required TResult Function() actionCompleted,
+    required TResult Function(int birdsDeleted) actionCompleted,
   }) {
     return initial();
   }
@@ -350,7 +352,7 @@ class _$Initial with DiagnosticableTreeMixin implements Initial {
     TResult Function()? initial,
     TResult Function()? actionInProgress,
     TResult Function(BirdFailure failure)? actionFailure,
-    TResult Function()? actionCompleted,
+    TResult Function(int birdsDeleted)? actionCompleted,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -442,7 +444,7 @@ class _$ActionInProgress
     required TResult Function() initial,
     required TResult Function() actionInProgress,
     required TResult Function(BirdFailure failure) actionFailure,
-    required TResult Function() actionCompleted,
+    required TResult Function(int birdsDeleted) actionCompleted,
   }) {
     return actionInProgress();
   }
@@ -453,7 +455,7 @@ class _$ActionInProgress
     TResult Function()? initial,
     TResult Function()? actionInProgress,
     TResult Function(BirdFailure failure)? actionFailure,
-    TResult Function()? actionCompleted,
+    TResult Function(int birdsDeleted)? actionCompleted,
     required TResult orElse(),
   }) {
     if (actionInProgress != null) {
@@ -578,7 +580,7 @@ class _$ActionFailure with DiagnosticableTreeMixin implements ActionFailure {
     required TResult Function() initial,
     required TResult Function() actionInProgress,
     required TResult Function(BirdFailure failure) actionFailure,
-    required TResult Function() actionCompleted,
+    required TResult Function(int birdsDeleted) actionCompleted,
   }) {
     return actionFailure(failure);
   }
@@ -589,7 +591,7 @@ class _$ActionFailure with DiagnosticableTreeMixin implements ActionFailure {
     TResult Function()? initial,
     TResult Function()? actionInProgress,
     TResult Function(BirdFailure failure)? actionFailure,
-    TResult Function()? actionCompleted,
+    TResult Function(int birdsDeleted)? actionCompleted,
     required TResult orElse(),
   }) {
     if (actionFailure != null) {
@@ -639,6 +641,7 @@ abstract class $ActionCompletedCopyWith<$Res> {
   factory $ActionCompletedCopyWith(
           ActionCompleted value, $Res Function(ActionCompleted) then) =
       _$ActionCompletedCopyWithImpl<$Res>;
+  $Res call({int birdsDeleted});
 }
 
 /// @nodoc
@@ -651,6 +654,18 @@ class _$ActionCompletedCopyWithImpl<$Res>
 
   @override
   ActionCompleted get _value => super._value as ActionCompleted;
+
+  @override
+  $Res call({
+    Object? birdsDeleted = freezed,
+  }) {
+    return _then(ActionCompleted(
+      birdsDeleted == freezed
+          ? _value.birdsDeleted
+          : birdsDeleted // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
@@ -658,27 +673,41 @@ class _$ActionCompletedCopyWithImpl<$Res>
 class _$ActionCompleted
     with DiagnosticableTreeMixin
     implements ActionCompleted {
-  const _$ActionCompleted();
+  const _$ActionCompleted(this.birdsDeleted);
+
+  @override
+  final int birdsDeleted;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'BirdActorState.actionCompleted()';
+    return 'BirdActorState.actionCompleted(birdsDeleted: $birdsDeleted)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'BirdActorState.actionCompleted'));
+      ..add(DiagnosticsProperty('type', 'BirdActorState.actionCompleted'))
+      ..add(DiagnosticsProperty('birdsDeleted', birdsDeleted));
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ActionCompleted);
+    return identical(this, other) ||
+        (other is ActionCompleted &&
+            (identical(other.birdsDeleted, birdsDeleted) ||
+                const DeepCollectionEquality()
+                    .equals(other.birdsDeleted, birdsDeleted)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(birdsDeleted);
+
+  @JsonKey(ignore: true)
+  @override
+  $ActionCompletedCopyWith<ActionCompleted> get copyWith =>
+      _$ActionCompletedCopyWithImpl<ActionCompleted>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -686,9 +715,9 @@ class _$ActionCompleted
     required TResult Function() initial,
     required TResult Function() actionInProgress,
     required TResult Function(BirdFailure failure) actionFailure,
-    required TResult Function() actionCompleted,
+    required TResult Function(int birdsDeleted) actionCompleted,
   }) {
-    return actionCompleted();
+    return actionCompleted(birdsDeleted);
   }
 
   @override
@@ -697,11 +726,11 @@ class _$ActionCompleted
     TResult Function()? initial,
     TResult Function()? actionInProgress,
     TResult Function(BirdFailure failure)? actionFailure,
-    TResult Function()? actionCompleted,
+    TResult Function(int birdsDeleted)? actionCompleted,
     required TResult orElse(),
   }) {
     if (actionCompleted != null) {
-      return actionCompleted();
+      return actionCompleted(birdsDeleted);
     }
     return orElse();
   }
@@ -734,5 +763,10 @@ class _$ActionCompleted
 }
 
 abstract class ActionCompleted implements BirdActorState {
-  const factory ActionCompleted() = _$ActionCompleted;
+  const factory ActionCompleted(int birdsDeleted) = _$ActionCompleted;
+
+  int get birdsDeleted => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ActionCompletedCopyWith<ActionCompleted> get copyWith =>
+      throw _privateConstructorUsedError;
 }

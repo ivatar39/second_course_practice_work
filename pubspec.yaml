@@ -11,11 +11,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   # UI
   cupertino_icons: ^1.0.3
   another_flushbar: ^1.10.24
-
+  intl: ^0.17.0
+  datetime_picker_formfield: ^2.0.0
   # DI
   injectable: ^1.4.1
   get_it: ^7.1.3

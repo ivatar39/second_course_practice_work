@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ivlup.second_course_practice_work">
    <application
-        android:label="second_course_practice_work"
+        android:label="Birds Reserve"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

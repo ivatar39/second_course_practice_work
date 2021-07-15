@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -21,61 +22,78 @@ class BirdsDeletePage extends StatelessWidget {
         lazy: false,
         create: (_) => SelectedBirds(),
         child: Builder(builder: (context) {
-          return Scaffold(
-            appBar: AppBar(
-              title: const Text(deleteBirds),
-              actions: [
-                IconButton(
-                  onPressed: () {
-                    if (context.selectedBirds.isNotEmpty) {
-                      _showDeletionDialog(
-                        context,
-                        context.read<BirdActorBloc>(),
-                        context.selectedBirds,
-                      );
-                    }
-                  },
-                  icon: Row(
-                    children: [
-                      Consumer<SelectedBirds>(
-                        builder: (context, value, child) {
-                          return Text(value.value.length.toString());
-                        },
-                      ),
-                      const Icon(Icons.delete),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            body: BlocBuilder<BirdsWatcherBloc, BirdsWatcherState>(
-              builder: (context, state) {
-                return state.map(
-                  initial: (s) => Container(),
-                  loadInProgress: (s) => const Center(child: CircularProgressIndicator()),
-                  loadSuccess: (state) => ListView.builder(
-                    itemBuilder: (context, index) {
-                      final bird = state.birds.elementAt(index);
-                      return BirdTile(
-                        bird: bird,
-                        key: Key(bird.id.toString()),
-                        onSelect: () {
-                          if (context.selectedBirds.contains(bird)) {
-                            final newBirds = context.selectedBirds.toList();
-                            newBirds.remove(bird);
-                            context.selectedBirds = newBirds;
-                          } else {
-                            final newBirds = context.selectedBirds.toList();
-                            newBirds.add(bird);
-                            context.selectedBirds = newBirds;
-                          }
-                        },
-                      );
+          return BlocListener<BirdActorBloc, BirdActorState>(
+            listener: (context, state) {
+              state.maybeMap(
+                actionCompleted: (state) {
+                  context.selectedBirds = [];
+                  FlushbarHelper.createInformation(
+                    message: '$deleted: ${state.birdsDeleted}',
+                    duration: const Duration(seconds: 1),
+                  ).show(context);
+                },
+                orElse: () {},
+              );
+            },
+            child: Scaffold(
+              appBar: AppBar(
+                title: const Text(deleteBirds),
+                actions: [
+                  IconButton(
+                    onPressed: () {
+                      if (context.selectedBirds.isNotEmpty) {
+                        _showDeletionDialog(
+                          context,
+                          context.read<BirdActorBloc>(),
+                          context.selectedBirds,
+                        );
+                      }
                     },
+                    icon: Row(
+                      children: [
+                        Consumer<SelectedBirds>(
+                          builder: (context, value, child) {
+                            return Text(value.value.length.toString());
+                          },
+                        ),
+                        const Icon(Icons.delete),
+                      ],
+                    ),
                   ),
-                  loadFailure: (s) => Center(child: Text(s.failure.toString())),
-                );
-              },
+                ],
+              ),
+              body: BlocBuilder<BirdsWatcherBloc, BirdsWatcherState>(
+                builder: (context, state) {
+                  return state.map(
+                    initial: (s) => Container(),
+                    loadInProgress: (s) => const Center(child: CircularProgressIndicator()),
+                    loadSuccess: (state) => ListView.builder(
+                      itemCount: state.birds.length,
+                      physics: const BouncingScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        final bird = state.birds.elementAt(index);
+                        return BirdTile(
+                          bird: bird,
+                          key: Key(bird.id.toString()),
+                          onSelect: () {
+                            if (context.selectedBirds.contains(bird)) {
+                              final newBirds = context.selectedBirds.toList();
+                              newBirds.remove(bird);
+                              context.selectedBirds = newBirds;
+                            } else {
+                              final newBirds = context.selectedBirds.toList();
+                              newBirds.add(bird);
+                              context.selectedBirds = newBirds;
+                            }
+                          },
+                        );
+                      },
+                    ),
+                    loadFailure: (s) => Center(child: Text(s.failure.toString())),
+                    queryLoaded: (_) => Container(),
+                  );
+                },
+              ),
             ),
           );
         }),
