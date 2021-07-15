@@ -5,7 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:moor_flutter/moor_flutter.dart' hide JsonKey;
+import 'package:moor/moor.dart' hide JsonKey;
 import 'package:second_course_practice_work/data/local_data_source.dart';
 import 'package:second_course_practice_work/domain/bird/bird_failure.dart';
 import 'package:second_course_practice_work/domain/bird/bird_repository.dart';
