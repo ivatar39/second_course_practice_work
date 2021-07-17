@@ -109,7 +109,7 @@ class LocalDataSource extends _$LocalDataSource {
 
     query
       ..addColumns([amountOfInjured])
-      ..groupBy([reserves.id]);
+      ..groupBy([reserves.name]);
 
     final result = await query.get();
 

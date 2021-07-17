@@ -23,7 +23,6 @@ class QueryBody extends StatelessWidget {
       return BirdTile(bird: queryObj);
     } else if (queryObj is ReservesWithInjuredBirds) {
       return ListTile(
-        leading: Text(queryObj.reserve.id.toString()),
         title: Text(queryObj.reserve.name),
         trailing: Text('$injuredBirds: ${queryObj.count}'),
       );

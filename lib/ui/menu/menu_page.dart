@@ -41,6 +41,7 @@ class MenuPage extends HookWidget {
         }
 
         return Scaffold(
+          resizeToAvoidBottomInset: true,
           appBar: AppBar(
             title: const Text(menuTitle),
             actions: [
@@ -68,62 +69,63 @@ class MenuPage extends HookWidget {
           body: Center(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Column(
-                children: [
-                  const SizedBox(height: 42),
-                  Card(
-                    elevation: 8,
-                    child: ListTile(
-                      leading: const Icon(Icons.home),
-                      title: const Text(reserves),
-                      onTap: () {
-                        context.router.push(const ReservesOverviewPageRoute());
-                      },
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Card(
+                      elevation: 8,
+                      child: ListTile(
+                        leading: const Icon(Icons.home),
+                        title: const Text(reserves),
+                        onTap: () {
+                          context.router.push(const ReservesOverviewPageRoute());
+                        },
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 12),
-                  Card(
-                    elevation: 8,
-                    child: ListView(
-                      physics: const BouncingScrollPhysics(),
-                      shrinkWrap: true,
-                      children: [
-                        ListTile(
-                          leading: const Icon(Icons.flutter_dash),
-                          title: const Text(birds),
-                          onTap: () {
-                            context.router.push(const BirdsOverviewPageRoute());
-                          },
-                        ),
-                        ListTile(
-                          leading: const Icon(Icons.add),
-                          title: const Text(addBird),
-                          onTap: () {
-                            context.router.push(BirdFormPageRoute());
-                          },
-                        ),
-                        ListTile(
-                          leading: const Icon(Icons.edit),
-                          title: const Text(editBirds),
-                          onTap: () {
-                            context.router.push(const BirdsEditPageRoute());
-                          },
-                        ),
-                        ListTile(
-                          leading: const Icon(Icons.delete),
-                          title: const Text(deleteBirds),
-                          onTap: () {
-                            context.router.push(const BirdsDeletePageRoute());
-                          },
-                        ),
-                      ],
+                    const SizedBox(height: 12),
+                    Card(
+                      elevation: 8,
+                      child: ListView(
+                        physics: const BouncingScrollPhysics(),
+                        shrinkWrap: true,
+                        children: [
+                          ListTile(
+                            leading: const Icon(Icons.flutter_dash),
+                            title: const Text(birds),
+                            onTap: () {
+                              context.router.push(const BirdsOverviewPageRoute());
+                            },
+                          ),
+                          ListTile(
+                            leading: const Icon(Icons.add),
+                            title: const Text(addBird),
+                            onTap: () {
+                              context.router.push(BirdFormPageRoute());
+                            },
+                          ),
+                          ListTile(
+                            leading: const Icon(Icons.edit),
+                            title: const Text(editBirds),
+                            onTap: () {
+                              context.router.push(const BirdsEditPageRoute());
+                            },
+                          ),
+                          ListTile(
+                            leading: const Icon(Icons.delete),
+                            title: const Text(deleteBirds),
+                            onTap: () {
+                              context.router.push(const BirdsDeletePageRoute());
+                            },
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Visibility(
-                    visible: state.maybeMap(orElse: () => false, loadInProgress: (_) => true),
-                    child: const LinearProgressIndicator(),
-                  )
-                ],
+                    Visibility(
+                      visible: state.maybeMap(orElse: () => false, loadInProgress: (_) => true),
+                      child: const LinearProgressIndicator(),
+                    )
+                  ],
+                ),
               ),
             ),
           ),
