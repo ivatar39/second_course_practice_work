@@ -1,5 +1,5 @@
 import 'package:another_flushbar/flushbar_helper.dart';
-import 'package:auto_route/src/router/auto_router_x.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -82,7 +82,7 @@ class BirdsOverviewPage extends StatelessWidget {
                         case birdsByName:
                           _showQueryDialog(context, context.read<BirdsWatcherBloc>());
                           break;
-                        case reservesWithInjuredBirds:
+                        case injuredBirdsStr:
                           context
                               .read<BirdsWatcherBloc>()
                               .add(const BirdsWatcherEvent.chosenReservesWithInjuredBirds());
@@ -105,8 +105,8 @@ class BirdsOverviewPage extends StatelessWidget {
                               child: Text(birdsByName),
                             ),
                             const PopupMenuItem<String>(
-                              value: reservesWithInjuredBirds,
-                              child: Text(reservesWithInjuredBirds),
+                              value: injuredBirdsStr,
+                              child: Text(injuredBirdsStr),
                             ),
                             const PopupMenuItem<String>(
                               value: reservesWithAverageWeightsAndBirds,
@@ -148,21 +148,21 @@ class QueryDialog extends HookWidget {
   Widget build(BuildContext context) {
     final textEditingController = useTextEditingController(text: '');
     return AlertDialog(
-      title: const Text('Введите имя:'),
+      title: const Text('$enterName:'),
       content: TextField(
         controller: textEditingController,
       ),
       actions: [
         TextButton(
           onPressed: () => false,
-          child: const Text('ОТМЕНА'),
+          child: const Text(cancelUp),
         ),
         TextButton(
           onPressed: () {
             birdsWatcherBloc.add(BirdsWatcherEvent.chosenBirdsByName(textEditingController.text));
             Navigator.pop(context);
           },
-          child: const Text('ПОИСК'),
+          child: const Text(searchUp),
         ),
       ],
     );

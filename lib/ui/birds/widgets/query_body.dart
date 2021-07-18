@@ -43,7 +43,7 @@ class QueryBody extends StatelessWidget {
                 ]))
             .toList(),
       );
-    } else if (queryData is Iterable<ReservesWithInjuredBirds>) {
+    } else if (queryData is Iterable<BirdsWithInjuries>) {
       return DataTable(
         columns: const [
           DataColumn(label: Text(name)),
@@ -51,7 +51,7 @@ class QueryBody extends StatelessWidget {
         ],
         rows: queryData
             .map((reservesWithInjuredBirds) => DataRow(cells: [
-                  DataCell(Text(reservesWithInjuredBirds.reserve.name.toString())),
+                  DataCell(Text(reservesWithInjuredBirds.name)),
                   DataCell(Text(reservesWithInjuredBirds.count.toString())),
                 ]))
             .toList(),

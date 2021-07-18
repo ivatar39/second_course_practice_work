@@ -34,11 +34,11 @@ class Reserves extends Table {
   TextColumn get description => text().nullable().withLength(min: descriptionMinLength, max: descriptionMaxLength)();
 }
 
-class ReservesWithInjuredBirds {
-  final Reserve reserve;
+class BirdsWithInjuries {
+  final String name;
   final int count;
 
-  ReservesWithInjuredBirds(this.reserve, this.count);
+  BirdsWithInjuries(this.name, this.count);
 }
 
 class ReservesWithBirds {
@@ -73,7 +73,9 @@ LazyDatabase _openConnection() {
 }
 
 @singleton
-@UseMoor(tables: [Birds, Reserves])
+@UseMoor(
+  tables: [Birds, Reserves],
+)
 class LocalDataSource extends _$LocalDataSource {
   LocalDataSource() : super(_openConnection());
 
@@ -88,39 +90,34 @@ class LocalDataSource extends _$LocalDataSource {
 
   /// query 1. With parameters
   Future<List<Bird>> birdsFilterName(String name) async {
-    return (select(birds)..where((t) => t.name.equals(name))).get();
+    final query = select(birds)..where((t) => t.name.equals(name));
+    print(query.constructQuery().sql);
+
+    final result = await query.get();
+    return result;
   }
 
-  /// query 2. Not simple
-  Future<List<ReservesWithInjuredBirds>> getReservesWithInjuredBirds() async {
+  /// query 2. Not simple. Group by name
+  Future<List<BirdsWithInjuries>> getInjuredBirds() async {
     final amountOfInjured = birds.isInjured.count(filter: const Constant(true));
-    final query = select(reserves).join(
-      [
-        leftOuterJoin(
-          birds,
-          birds.reserveId.equalsExp(reserves.id),
-          useColumns: false,
-        )
-      ],
-    );
 
-    query
-      ..addColumns([amountOfInjured])
-      ..groupBy([reserves.name]);
+    final query = selectOnly(birds)
+      ..addColumns([birds.name, amountOfInjured])
+      ..groupBy([birds.name]);
 
     final result = await query.get();
 
     return result
         .map(
-          (resultRows) => ReservesWithInjuredBirds(
-            resultRows.readTable(reserves),
-            resultRows.read(amountOfInjured),
+          (e) => BirdsWithInjuries(
+            e.rawData.data['birds.name'].toString(),
+            e.read(amountOfInjured),
           ),
         )
         .toList();
   }
 
-  /// query 3. Not simple
+  /// query 3. Not simple. Two tables query
   Future<List<ReservesWithBirds>> getReservesWithBirds() async {
     final averageWeight = birds.weight.avg();
     final names = birds.name.groupConcat(separator: ', ');

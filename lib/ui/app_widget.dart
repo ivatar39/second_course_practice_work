@@ -27,6 +27,7 @@ class AppWidget extends StatelessWidget {
           Locale('en'),
           Locale('ru'),
         ],
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.cyan,
           inputDecorationTheme: InputDecorationTheme(

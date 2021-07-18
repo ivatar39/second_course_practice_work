@@ -49,8 +49,8 @@ class BirdRepository {
     return Iterable.castFrom(birds);
   }
 
-  Future<Iterable<ReservesWithInjuredBirds>> getReservesWithInjuredBirds() async {
-    final birds = await _localDataSource.getReservesWithInjuredBirds();
+  Future<Iterable<BirdsWithInjuries>> getInjuredBirds() async {
+    final birds = await _localDataSource.getInjuredBirds();
     return Iterable.castFrom(birds);
   }
 

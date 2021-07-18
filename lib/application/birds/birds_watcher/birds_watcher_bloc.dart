@@ -44,7 +44,6 @@ class BirdsWatcherBloc extends Bloc<BirdsWatcherEvent, BirdsWatcherState> {
       chosenBirdsByName: (e) async* {
         yield const BirdsWatcherState.loadInProgress();
         final birds = await _birdRepository.getBirdsByName(e.name);
-        print('object');
         yield BirdsWatcherState.queryLoaded(birds, birdsByName);
       },
       chosenReservesWithBirds: (_) async* {
@@ -54,8 +53,8 @@ class BirdsWatcherBloc extends Bloc<BirdsWatcherEvent, BirdsWatcherState> {
       },
       chosenReservesWithInjuredBirds: (_) async* {
         yield const BirdsWatcherState.loadInProgress();
-        final chosenReservesWithInjuredBirds = await _birdRepository.getReservesWithInjuredBirds();
-        yield BirdsWatcherState.queryLoaded(chosenReservesWithInjuredBirds, reservesWithInjuredBirds);
+        final chosenReservesWithInjuredBirds = await _birdRepository.getInjuredBirds();
+        yield BirdsWatcherState.queryLoaded(chosenReservesWithInjuredBirds, injuredBirdsStr);
       },
     );
   }

@@ -41,11 +41,15 @@ const String deleted = 'Всего птиц успешно удалено';
 const String reserves = 'Заповедники';
 const String loading = 'Загрузка...';
 const String unexpectedFailure = 'Непредвиденная ошибка';
+const String cancelUp = 'ОТМЕНА';
+const String deleteUp = 'УДАЛИТЬ';
+const String searchUp = 'ПОИСК';
+const String enterName = 'Введите имя';
 
 const String queries = 'Запросы';
 
 const String birdsByName = 'Фильтровать птиц по имени';
-const String reservesWithInjuredBirds = 'Заповедники с ранеными птицами';
+const String injuredBirdsStr = 'Заболевшие птицы';
 const String reservesWithAverageWeightsAndBirds = 'Средняя масса по птицам в заповедниках';
 
 const String queryNoResult = 'Запрос не дал результатов';
