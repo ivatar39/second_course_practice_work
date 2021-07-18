@@ -11,15 +11,6 @@ String? validateName(String? input) {
   return null;
 }
 
-String? validateType(String? input) {
-  if (input == null || input.isEmpty) {
-    return null;
-  } else if (Birds.typeMinLength >= input.length || input.length >= Birds.typeMaxLength) {
-    return typeInvalid;
-  }
-  return null;
-}
-
 String? validateWeight(String? input) {
   if (input == null || input.isEmpty) {
     return null;

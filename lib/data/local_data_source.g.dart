@@ -10,7 +10,6 @@ part of 'local_data_source.dart';
 class Bird extends DataClass implements Insertable<Bird> {
   final int id;
   final String name;
-  final String? type;
   final double? weight;
   final bool isInjured;
   final DateTime? birthday;
@@ -18,7 +17,6 @@ class Bird extends DataClass implements Insertable<Bird> {
   Bird(
       {required this.id,
       required this.name,
-      this.type,
       this.weight,
       required this.isInjured,
       this.birthday,
@@ -31,8 +29,6 @@ class Bird extends DataClass implements Insertable<Bird> {
           .mapFromDatabaseResponse(data['${effectivePrefix}id'])!,
       name: const StringType()
           .mapFromDatabaseResponse(data['${effectivePrefix}name'])!,
-      type: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}type']),
       weight: const RealType()
           .mapFromDatabaseResponse(data['${effectivePrefix}weight']),
       isInjured: const BoolType()
@@ -48,9 +44,6 @@ class Bird extends DataClass implements Insertable<Bird> {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
     map['name'] = Variable<String>(name);
-    if (!nullToAbsent || type != null) {
-      map['type'] = Variable<String?>(type);
-    }
     if (!nullToAbsent || weight != null) {
       map['weight'] = Variable<double?>(weight);
     }
@@ -68,7 +61,6 @@ class Bird extends DataClass implements Insertable<Bird> {
     return BirdsCompanion(
       id: Value(id),
       name: Value(name),
-      type: type == null && nullToAbsent ? const Value.absent() : Value(type),
       weight:
           weight == null && nullToAbsent ? const Value.absent() : Value(weight),
       isInjured: Value(isInjured),
@@ -87,7 +79,6 @@ class Bird extends DataClass implements Insertable<Bird> {
     return Bird(
       id: serializer.fromJson<int>(json['id']),
       name: serializer.fromJson<String>(json['name']),
-      type: serializer.fromJson<String?>(json['type']),
       weight: serializer.fromJson<double?>(json['weight']),
       isInjured: serializer.fromJson<bool>(json['isInjured']),
       birthday: serializer.fromJson<DateTime?>(json['birthday']),
@@ -100,7 +91,6 @@ class Bird extends DataClass implements Insertable<Bird> {
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
       'name': serializer.toJson<String>(name),
-      'type': serializer.toJson<String?>(type),
       'weight': serializer.toJson<double?>(weight),
       'isInjured': serializer.toJson<bool>(isInjured),
       'birthday': serializer.toJson<DateTime?>(birthday),
@@ -111,7 +101,6 @@ class Bird extends DataClass implements Insertable<Bird> {
   Bird copyWith(
           {int? id,
           String? name,
-          String? type,
           double? weight,
           bool? isInjured,
           DateTime? birthday,
@@ -119,7 +108,6 @@ class Bird extends DataClass implements Insertable<Bird> {
       Bird(
         id: id ?? this.id,
         name: name ?? this.name,
-        type: type ?? this.type,
         weight: weight ?? this.weight,
         isInjured: isInjured ?? this.isInjured,
         birthday: birthday ?? this.birthday,
@@ -130,7 +118,6 @@ class Bird extends DataClass implements Insertable<Bird> {
     return (StringBuffer('Bird(')
           ..write('id: $id, ')
           ..write('name: $name, ')
-          ..write('type: $type, ')
           ..write('weight: $weight, ')
           ..write('isInjured: $isInjured, ')
           ..write('birthday: $birthday, ')
@@ -145,18 +132,15 @@ class Bird extends DataClass implements Insertable<Bird> {
       $mrjc(
           name.hashCode,
           $mrjc(
-              type.hashCode,
-              $mrjc(
-                  weight.hashCode,
-                  $mrjc(isInjured.hashCode,
-                      $mrjc(birthday.hashCode, reserveId.hashCode)))))));
+              weight.hashCode,
+              $mrjc(isInjured.hashCode,
+                  $mrjc(birthday.hashCode, reserveId.hashCode))))));
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is Bird &&
           other.id == this.id &&
           other.name == this.name &&
-          other.type == this.type &&
           other.weight == this.weight &&
           other.isInjured == this.isInjured &&
           other.birthday == this.birthday &&
@@ -166,7 +150,6 @@ class Bird extends DataClass implements Insertable<Bird> {
 class BirdsCompanion extends UpdateCompanion<Bird> {
   final Value<int> id;
   final Value<String> name;
-  final Value<String?> type;
   final Value<double?> weight;
   final Value<bool> isInjured;
   final Value<DateTime?> birthday;
@@ -174,7 +157,6 @@ class BirdsCompanion extends UpdateCompanion<Bird> {
   const BirdsCompanion({
     this.id = const Value.absent(),
     this.name = const Value.absent(),
-    this.type = const Value.absent(),
     this.weight = const Value.absent(),
     this.isInjured = const Value.absent(),
     this.birthday = const Value.absent(),
@@ -183,7 +165,6 @@ class BirdsCompanion extends UpdateCompanion<Bird> {
   BirdsCompanion.insert({
     this.id = const Value.absent(),
     required String name,
-    this.type = const Value.absent(),
     this.weight = const Value.absent(),
     this.isInjured = const Value.absent(),
     this.birthday = const Value.absent(),
@@ -192,7 +173,6 @@ class BirdsCompanion extends UpdateCompanion<Bird> {
   static Insertable<Bird> custom({
     Expression<int>? id,
     Expression<String>? name,
-    Expression<String?>? type,
     Expression<double?>? weight,
     Expression<bool>? isInjured,
     Expression<DateTime?>? birthday,
@@ -201,7 +181,6 @@ class BirdsCompanion extends UpdateCompanion<Bird> {
     return RawValuesInsertable({
       if (id != null) 'id': id,
       if (name != null) 'name': name,
-      if (type != null) 'type': type,
       if (weight != null) 'weight': weight,
       if (isInjured != null) 'is_injured': isInjured,
       if (birthday != null) 'birthday': birthday,
@@ -212,7 +191,6 @@ class BirdsCompanion extends UpdateCompanion<Bird> {
   BirdsCompanion copyWith(
       {Value<int>? id,
       Value<String>? name,
-      Value<String?>? type,
       Value<double?>? weight,
       Value<bool>? isInjured,
       Value<DateTime?>? birthday,
@@ -220,7 +198,6 @@ class BirdsCompanion extends UpdateCompanion<Bird> {
     return BirdsCompanion(
       id: id ?? this.id,
       name: name ?? this.name,
-      type: type ?? this.type,
       weight: weight ?? this.weight,
       isInjured: isInjured ?? this.isInjured,
       birthday: birthday ?? this.birthday,
@@ -236,9 +213,6 @@ class BirdsCompanion extends UpdateCompanion<Bird> {
     }
     if (name.present) {
       map['name'] = Variable<String>(name.value);
-    }
-    if (type.present) {
-      map['type'] = Variable<String?>(type.value);
     }
     if (weight.present) {
       map['weight'] = Variable<double?>(weight.value);
@@ -260,7 +234,6 @@ class BirdsCompanion extends UpdateCompanion<Bird> {
     return (StringBuffer('BirdsCompanion(')
           ..write('id: $id, ')
           ..write('name: $name, ')
-          ..write('type: $type, ')
           ..write('weight: $weight, ')
           ..write('isInjured: $isInjured, ')
           ..write('birthday: $birthday, ')
@@ -286,12 +259,6 @@ class $BirdsTable extends Birds with TableInfo<$BirdsTable, Bird> {
       additionalChecks: GeneratedColumn.checkTextLength(),
       typeName: 'TEXT',
       requiredDuringInsert: true);
-  final VerificationMeta _typeMeta = const VerificationMeta('type');
-  late final GeneratedColumn<String?> type = GeneratedColumn<String?>(
-      'type', aliasedName, true,
-      additionalChecks: GeneratedColumn.checkTextLength(),
-      typeName: 'TEXT',
-      requiredDuringInsert: false);
   final VerificationMeta _weightMeta = const VerificationMeta('weight');
   late final GeneratedColumn<double?> weight = GeneratedColumn<double?>(
       'weight', aliasedName, true,
@@ -315,7 +282,7 @@ class $BirdsTable extends Birds with TableInfo<$BirdsTable, Bird> {
       $customConstraints: 'NULLABLE REFERENCES reserves(id)');
   @override
   List<GeneratedColumn> get $columns =>
-      [id, name, type, weight, isInjured, birthday, reserveId];
+      [id, name, weight, isInjured, birthday, reserveId];
   @override
   String get aliasedName => _alias ?? 'birds';
   @override
@@ -333,10 +300,6 @@ class $BirdsTable extends Birds with TableInfo<$BirdsTable, Bird> {
           _nameMeta, name.isAcceptableOrUnknown(data['name']!, _nameMeta));
     } else if (isInserting) {
       context.missing(_nameMeta);
-    }
-    if (data.containsKey('type')) {
-      context.handle(
-          _typeMeta, type.isAcceptableOrUnknown(data['type']!, _typeMeta));
     }
     if (data.containsKey('weight')) {
       context.handle(_weightMeta,

@@ -16,9 +16,6 @@ class Birds extends Table {
   static const nameMinLength = 1;
   static const nameMaxLength = 30;
   TextColumn get name => text().withLength(min: nameMinLength, max: nameMaxLength)();
-  static const typeMinLength = 1;
-  static const typeMaxLength = 20;
-  TextColumn get type => text().nullable().withLength(min: typeMinLength, max: typeMaxLength)();
   static const weightMin = 0.0;
   static const weightMax = 99999.9;
   RealColumn get weight => real().nullable()();

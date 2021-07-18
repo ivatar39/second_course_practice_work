@@ -6,8 +6,6 @@ class BirdFormEvent with _$BirdFormEvent {
 
   const factory BirdFormEvent.nameChanged(String nameStr) = NameChanged;
 
-  const factory BirdFormEvent.typeChanged(String typeStr) = TypeChanged;
-
   const factory BirdFormEvent.isInjuredChanged({required bool isInjured}) = IsInjuredChanged;
 
   const factory BirdFormEvent.weightChanged(String weightStr) = WeightChanged;

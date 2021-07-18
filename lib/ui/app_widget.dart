@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:second_course_practice_work/application/birds/birds_wacher/birds_watcher_bloc.dart';
 import 'package:second_course_practice_work/application/main/main_bloc.dart';
 import 'package:second_course_practice_work/injection/injection.dart';
 import 'package:second_course_practice_work/ui/core/translations.dart';
@@ -15,7 +14,6 @@ class AppWidget extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => getIt<MainBloc>()..add(const MainEvent.opened())),
-        BlocProvider(create: (_) => getIt<BirdsWatcherBloc>()..add(const BirdsWatcherEvent.watchAllStarted())),
       ],
       child: MaterialApp.router(
         title: appTitle,

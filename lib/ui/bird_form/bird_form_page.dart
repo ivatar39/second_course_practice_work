@@ -5,13 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:second_course_practice_work/application/birds/bird_form/bird_form_bloc.dart';
 import 'package:second_course_practice_work/data/local_data_source.dart';
 import 'package:second_course_practice_work/injection/injection.dart';
-import 'package:second_course_practice_work/ui/birds/widgets/birthday_picker.dart';
-import 'package:second_course_practice_work/ui/birds/widgets/id_field.dart';
-import 'package:second_course_practice_work/ui/birds/widgets/is_injured_radio.dart';
-import 'package:second_course_practice_work/ui/birds/widgets/name_field.dart';
-import 'package:second_course_practice_work/ui/birds/widgets/reserve_id_dropdown.dart';
-import 'package:second_course_practice_work/ui/birds/widgets/type_field.dart';
-import 'package:second_course_practice_work/ui/birds/widgets/weight_field.dart';
+import 'package:second_course_practice_work/ui/bird_form/widgets/birthday_picker.dart';
+import 'package:second_course_practice_work/ui/bird_form/widgets/id_field.dart';
+import 'package:second_course_practice_work/ui/bird_form/widgets/is_injured_radio.dart';
+import 'package:second_course_practice_work/ui/bird_form/widgets/name_field.dart';
+import 'package:second_course_practice_work/ui/bird_form/widgets/reserve_id_dropdown.dart';
+import 'package:second_course_practice_work/ui/bird_form/widgets/weight_field.dart';
 import 'package:second_course_practice_work/ui/core/translations.dart';
 
 class BirdFormPage extends StatelessWidget {
@@ -99,26 +98,28 @@ class BirdFormScaffold extends StatelessWidget {
       ),
       body: BlocBuilder<BirdFormBloc, BirdFormState>(
         builder: (context, state) {
-          return Form(
-            key: formKey,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Column(
-                children: [
-                  const NameField(),
-                  const TypeField(),
-                  const WeightField(),
-                  const IsInjuredRadio(),
-                  const BirthdayPicker(),
-                  const ReserveIdDropdown(),
-                  Visibility(
-                    visible: editedBird != null,
-                    child: IdField(
-                      id: editedBird?.id,
+          return AspectRatio(
+            aspectRatio: 1,
+            child: Form(
+              key: formKey,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Column(
+                  children: [
+                    const NameField(),
+                    const WeightField(),
+                    const IsInjuredRadio(),
+                    const BirthdayPicker(),
+                    const ReserveIdDropdown(),
+                    Visibility(
+                      visible: editedBird != null,
+                      child: IdField(
+                        id: editedBird?.id,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           );

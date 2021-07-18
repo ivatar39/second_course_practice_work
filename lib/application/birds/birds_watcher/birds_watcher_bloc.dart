@@ -9,7 +9,7 @@ import 'package:meta/meta.dart';
 import 'package:second_course_practice_work/data/local_data_source.dart';
 import 'package:second_course_practice_work/domain/bird/bird_failure.dart';
 import 'package:second_course_practice_work/domain/bird/bird_repository.dart';
-import 'package:second_course_practice_work/ui/core/translations.dart';
+import 'package:second_course_practice_work/ui/core/translations.dart' hide add;
 
 part 'birds_watcher_bloc.freezed.dart';
 part 'birds_watcher_event.dart';
@@ -44,6 +44,7 @@ class BirdsWatcherBloc extends Bloc<BirdsWatcherEvent, BirdsWatcherState> {
       chosenBirdsByName: (e) async* {
         yield const BirdsWatcherState.loadInProgress();
         final birds = await _birdRepository.getBirdsByName(e.name);
+        print('object');
         yield BirdsWatcherState.queryLoaded(birds, birdsByName);
       },
       chosenReservesWithBirds: (_) async* {

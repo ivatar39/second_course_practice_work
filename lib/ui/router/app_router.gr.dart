@@ -5,21 +5,16 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i1;
-import 'package:flutter/cupertino.dart' as _i11;
 import 'package:flutter/material.dart' as _i2;
-import 'package:second_course_practice_work/ui/birds/bird_form_page.dart'
+import 'package:second_course_practice_work/ui/bird_form/bird_form_page.dart'
     as _i5;
-import 'package:second_course_practice_work/ui/birds/birds_delete_page.dart'
-    as _i8;
 import 'package:second_course_practice_work/ui/birds/birds_overview_page.dart'
     as _i6;
-import 'package:second_course_practice_work/ui/birds/brids_edit_page.dart'
-    as _i7;
 import 'package:second_course_practice_work/ui/birds/query_result_page.dart'
-    as _i9;
+    as _i7;
 import 'package:second_course_practice_work/ui/menu/menu_page.dart' as _i4;
 import 'package:second_course_practice_work/ui/reserves/reserves_overview_page.dart'
-    as _i10;
+    as _i8;
 import 'package:second_course_practice_work/ui/splash/splash_page.dart' as _i3;
 
 class AppRouter extends _i1.RootStackRouter {
@@ -48,31 +43,22 @@ class AppRouter extends _i1.RootStackRouter {
         fullscreenDialog: true),
     BirdsOverviewPageRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return const _i6.BirdsOverviewPage();
-        }),
-    BirdsEditPageRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
-        routeData: routeData,
-        builder: (_) {
-          return const _i7.BirdsEditPage();
-        }),
-    BirdsDeletePageRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
-        routeData: routeData,
-        builder: (_) {
-          return const _i8.BirdsDeletePage();
+        builder: (data) {
+          final args = data.argsAs<BirdsOverviewPageRouteArgs>();
+          return _i6.BirdsOverviewPage(key: args.key, mode: args.mode);
         }),
     QueryResultPageRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<QueryResultPageRouteArgs>();
-          return _i9.QueryResultPage(
+          return _i7.QueryResultPage(
               queryData: args.queryData, queryName: args.queryName);
         },
         fullscreenDialog: true),
     ReservesOverviewPageRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i10.ReservesOverviewPage();
+          return const _i8.ReservesOverviewPage();
         })
   };
 
@@ -83,8 +69,6 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(BirdFormPageRoute.name, path: '/bird-form-page'),
         _i1.RouteConfig(BirdsOverviewPageRoute.name,
             path: '/birds-overview-page'),
-        _i1.RouteConfig(BirdsEditPageRoute.name, path: '/birds-edit-page'),
-        _i1.RouteConfig(BirdsDeletePageRoute.name, path: '/birds-delete-page'),
         _i1.RouteConfig(QueryResultPageRoute.name, path: '/query-result-page'),
         _i1.RouteConfig(ReservesOverviewPageRoute.name,
             path: '/reserves-overview-page')
@@ -104,7 +88,7 @@ class MenuPageRoute extends _i1.PageRouteInfo {
 }
 
 class BirdFormPageRoute extends _i1.PageRouteInfo<BirdFormPageRouteArgs> {
-  BirdFormPageRoute({_i11.Key? key, dynamic editedBird})
+  BirdFormPageRoute({_i2.Key? key, dynamic editedBird})
       : super(name,
             path: '/bird-form-page',
             args: BirdFormPageRouteArgs(key: key, editedBird: editedBird));
@@ -115,27 +99,27 @@ class BirdFormPageRoute extends _i1.PageRouteInfo<BirdFormPageRouteArgs> {
 class BirdFormPageRouteArgs {
   const BirdFormPageRouteArgs({this.key, this.editedBird});
 
-  final _i11.Key? key;
+  final _i2.Key? key;
 
   final dynamic editedBird;
 }
 
-class BirdsOverviewPageRoute extends _i1.PageRouteInfo {
-  const BirdsOverviewPageRoute() : super(name, path: '/birds-overview-page');
+class BirdsOverviewPageRoute
+    extends _i1.PageRouteInfo<BirdsOverviewPageRouteArgs> {
+  BirdsOverviewPageRoute({_i2.Key? key, required _i4.BirdsTableMode mode})
+      : super(name,
+            path: '/birds-overview-page',
+            args: BirdsOverviewPageRouteArgs(key: key, mode: mode));
 
   static const String name = 'BirdsOverviewPageRoute';
 }
 
-class BirdsEditPageRoute extends _i1.PageRouteInfo {
-  const BirdsEditPageRoute() : super(name, path: '/birds-edit-page');
+class BirdsOverviewPageRouteArgs {
+  const BirdsOverviewPageRouteArgs({this.key, required this.mode});
 
-  static const String name = 'BirdsEditPageRoute';
-}
+  final _i2.Key? key;
 
-class BirdsDeletePageRoute extends _i1.PageRouteInfo {
-  const BirdsDeletePageRoute() : super(name, path: '/birds-delete-page');
-
-  static const String name = 'BirdsDeletePageRoute';
+  final _i4.BirdsTableMode mode;
 }
 
 class QueryResultPageRoute extends _i1.PageRouteInfo<QueryResultPageRouteArgs> {

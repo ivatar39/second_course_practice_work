@@ -54,12 +54,6 @@ class BirdFormBloc extends Bloc<BirdFormEvent, BirdFormState> {
           saveFailureOrSuccessOption: none(),
         );
       },
-      typeChanged: (e) async* {
-        yield state.copyWith(
-          bird: state.bird.copyWith(type: e.typeStr),
-          saveFailureOrSuccessOption: none(),
-        );
-      },
       isInjuredChanged: (e) async* {
         yield state.copyWith(
           bird: state.bird.copyWith(isInjured: e.isInjured),
@@ -99,7 +93,6 @@ class BirdFormBloc extends Bloc<BirdFormEvent, BirdFormState> {
             name: Value(state.bird.name),
             isInjured: Value(state.bird.isInjured),
             weight: Value(state.bird.weight),
-            type: Value(state.bird.type),
             birthday: Value(state.bird.birthday),
             reserveId: Value(state.bird.reserveId),
           );

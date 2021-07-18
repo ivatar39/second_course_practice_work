@@ -43,7 +43,6 @@ class BirdTile extends HookWidget {
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(bird.type ?? ''),
             Visibility(
               visible: bird.birthday != null,
               child: bird.birthday != null

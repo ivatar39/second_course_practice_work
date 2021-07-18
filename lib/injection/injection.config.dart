@@ -9,7 +9,7 @@ import 'package:injectable/injectable.dart' as _i2;
 
 import '../application/birds/bird_actor/bird_actor_bloc.dart' as _i9;
 import '../application/birds/bird_form/bird_form_bloc.dart' as _i10;
-import '../application/birds/birds_wacher/birds_watcher_bloc.dart' as _i8;
+import '../application/birds/birds_watcher/birds_watcher_bloc.dart' as _i8;
 import '../application/main/main_bloc.dart' as _i3;
 import '../application/reserves/reserves_watcher/reserves_watcher_bloc.dart'
     as _i6;

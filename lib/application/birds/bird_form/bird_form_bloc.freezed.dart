@@ -28,12 +28,6 @@ class _$BirdFormEventTearOff {
     );
   }
 
-  TypeChanged typeChanged(String typeStr) {
-    return TypeChanged(
-      typeStr,
-    );
-  }
-
   IsInjuredChanged isInjuredChanged({required bool isInjured}) {
     return IsInjuredChanged(
       isInjured: isInjured,
@@ -72,7 +66,6 @@ mixin _$BirdFormEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(Option<Bird> initialBirdOption) initialized,
     required TResult Function(String nameStr) nameChanged,
-    required TResult Function(String typeStr) typeChanged,
     required TResult Function(bool isInjured) isInjuredChanged,
     required TResult Function(String weightStr) weightChanged,
     required TResult Function(String reserveIdStr) reserveIdChanged,
@@ -84,7 +77,6 @@ mixin _$BirdFormEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<Bird> initialBirdOption)? initialized,
     TResult Function(String nameStr)? nameChanged,
-    TResult Function(String typeStr)? typeChanged,
     TResult Function(bool isInjured)? isInjuredChanged,
     TResult Function(String weightStr)? weightChanged,
     TResult Function(String reserveIdStr)? reserveIdChanged,
@@ -97,7 +89,6 @@ mixin _$BirdFormEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(Initialized value) initialized,
     required TResult Function(NameChanged value) nameChanged,
-    required TResult Function(TypeChanged value) typeChanged,
     required TResult Function(IsInjuredChanged value) isInjuredChanged,
     required TResult Function(WeightChanged value) weightChanged,
     required TResult Function(ReserveIdChanged value) reserveIdChanged,
@@ -109,7 +100,6 @@ mixin _$BirdFormEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
     TResult Function(NameChanged value)? nameChanged,
-    TResult Function(TypeChanged value)? typeChanged,
     TResult Function(IsInjuredChanged value)? isInjuredChanged,
     TResult Function(WeightChanged value)? weightChanged,
     TResult Function(ReserveIdChanged value)? reserveIdChanged,
@@ -213,7 +203,6 @@ class _$Initialized with DiagnosticableTreeMixin implements Initialized {
   TResult when<TResult extends Object?>({
     required TResult Function(Option<Bird> initialBirdOption) initialized,
     required TResult Function(String nameStr) nameChanged,
-    required TResult Function(String typeStr) typeChanged,
     required TResult Function(bool isInjured) isInjuredChanged,
     required TResult Function(String weightStr) weightChanged,
     required TResult Function(String reserveIdStr) reserveIdChanged,
@@ -228,7 +217,6 @@ class _$Initialized with DiagnosticableTreeMixin implements Initialized {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<Bird> initialBirdOption)? initialized,
     TResult Function(String nameStr)? nameChanged,
-    TResult Function(String typeStr)? typeChanged,
     TResult Function(bool isInjured)? isInjuredChanged,
     TResult Function(String weightStr)? weightChanged,
     TResult Function(String reserveIdStr)? reserveIdChanged,
@@ -247,7 +235,6 @@ class _$Initialized with DiagnosticableTreeMixin implements Initialized {
   TResult map<TResult extends Object?>({
     required TResult Function(Initialized value) initialized,
     required TResult Function(NameChanged value) nameChanged,
-    required TResult Function(TypeChanged value) typeChanged,
     required TResult Function(IsInjuredChanged value) isInjuredChanged,
     required TResult Function(WeightChanged value) weightChanged,
     required TResult Function(ReserveIdChanged value) reserveIdChanged,
@@ -262,7 +249,6 @@ class _$Initialized with DiagnosticableTreeMixin implements Initialized {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
     TResult Function(NameChanged value)? nameChanged,
-    TResult Function(TypeChanged value)? typeChanged,
     TResult Function(IsInjuredChanged value)? isInjuredChanged,
     TResult Function(WeightChanged value)? weightChanged,
     TResult Function(ReserveIdChanged value)? reserveIdChanged,
@@ -360,7 +346,6 @@ class _$NameChanged with DiagnosticableTreeMixin implements NameChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(Option<Bird> initialBirdOption) initialized,
     required TResult Function(String nameStr) nameChanged,
-    required TResult Function(String typeStr) typeChanged,
     required TResult Function(bool isInjured) isInjuredChanged,
     required TResult Function(String weightStr) weightChanged,
     required TResult Function(String reserveIdStr) reserveIdChanged,
@@ -375,7 +360,6 @@ class _$NameChanged with DiagnosticableTreeMixin implements NameChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<Bird> initialBirdOption)? initialized,
     TResult Function(String nameStr)? nameChanged,
-    TResult Function(String typeStr)? typeChanged,
     TResult Function(bool isInjured)? isInjuredChanged,
     TResult Function(String weightStr)? weightChanged,
     TResult Function(String reserveIdStr)? reserveIdChanged,
@@ -394,7 +378,6 @@ class _$NameChanged with DiagnosticableTreeMixin implements NameChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(Initialized value) initialized,
     required TResult Function(NameChanged value) nameChanged,
-    required TResult Function(TypeChanged value) typeChanged,
     required TResult Function(IsInjuredChanged value) isInjuredChanged,
     required TResult Function(WeightChanged value) weightChanged,
     required TResult Function(ReserveIdChanged value) reserveIdChanged,
@@ -409,7 +392,6 @@ class _$NameChanged with DiagnosticableTreeMixin implements NameChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
     TResult Function(NameChanged value)? nameChanged,
-    TResult Function(TypeChanged value)? typeChanged,
     TResult Function(IsInjuredChanged value)? isInjuredChanged,
     TResult Function(WeightChanged value)? weightChanged,
     TResult Function(ReserveIdChanged value)? reserveIdChanged,
@@ -430,153 +412,6 @@ abstract class NameChanged implements BirdFormEvent {
   String get nameStr => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $NameChangedCopyWith<NameChanged> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $TypeChangedCopyWith<$Res> {
-  factory $TypeChangedCopyWith(
-          TypeChanged value, $Res Function(TypeChanged) then) =
-      _$TypeChangedCopyWithImpl<$Res>;
-  $Res call({String typeStr});
-}
-
-/// @nodoc
-class _$TypeChangedCopyWithImpl<$Res> extends _$BirdFormEventCopyWithImpl<$Res>
-    implements $TypeChangedCopyWith<$Res> {
-  _$TypeChangedCopyWithImpl(
-      TypeChanged _value, $Res Function(TypeChanged) _then)
-      : super(_value, (v) => _then(v as TypeChanged));
-
-  @override
-  TypeChanged get _value => super._value as TypeChanged;
-
-  @override
-  $Res call({
-    Object? typeStr = freezed,
-  }) {
-    return _then(TypeChanged(
-      typeStr == freezed
-          ? _value.typeStr
-          : typeStr // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$TypeChanged with DiagnosticableTreeMixin implements TypeChanged {
-  const _$TypeChanged(this.typeStr);
-
-  @override
-  final String typeStr;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'BirdFormEvent.typeChanged(typeStr: $typeStr)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'BirdFormEvent.typeChanged'))
-      ..add(DiagnosticsProperty('typeStr', typeStr));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is TypeChanged &&
-            (identical(other.typeStr, typeStr) ||
-                const DeepCollectionEquality().equals(other.typeStr, typeStr)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(typeStr);
-
-  @JsonKey(ignore: true)
-  @override
-  $TypeChangedCopyWith<TypeChanged> get copyWith =>
-      _$TypeChangedCopyWithImpl<TypeChanged>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(Option<Bird> initialBirdOption) initialized,
-    required TResult Function(String nameStr) nameChanged,
-    required TResult Function(String typeStr) typeChanged,
-    required TResult Function(bool isInjured) isInjuredChanged,
-    required TResult Function(String weightStr) weightChanged,
-    required TResult Function(String reserveIdStr) reserveIdChanged,
-    required TResult Function(DateTime birthday) birthdayChanged,
-    required TResult Function() saved,
-  }) {
-    return typeChanged(typeStr);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Option<Bird> initialBirdOption)? initialized,
-    TResult Function(String nameStr)? nameChanged,
-    TResult Function(String typeStr)? typeChanged,
-    TResult Function(bool isInjured)? isInjuredChanged,
-    TResult Function(String weightStr)? weightChanged,
-    TResult Function(String reserveIdStr)? reserveIdChanged,
-    TResult Function(DateTime birthday)? birthdayChanged,
-    TResult Function()? saved,
-    required TResult orElse(),
-  }) {
-    if (typeChanged != null) {
-      return typeChanged(typeStr);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Initialized value) initialized,
-    required TResult Function(NameChanged value) nameChanged,
-    required TResult Function(TypeChanged value) typeChanged,
-    required TResult Function(IsInjuredChanged value) isInjuredChanged,
-    required TResult Function(WeightChanged value) weightChanged,
-    required TResult Function(ReserveIdChanged value) reserveIdChanged,
-    required TResult Function(BirthdayChanged value) birthdayChanged,
-    required TResult Function(Saved value) saved,
-  }) {
-    return typeChanged(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initialized value)? initialized,
-    TResult Function(NameChanged value)? nameChanged,
-    TResult Function(TypeChanged value)? typeChanged,
-    TResult Function(IsInjuredChanged value)? isInjuredChanged,
-    TResult Function(WeightChanged value)? weightChanged,
-    TResult Function(ReserveIdChanged value)? reserveIdChanged,
-    TResult Function(BirthdayChanged value)? birthdayChanged,
-    TResult Function(Saved value)? saved,
-    required TResult orElse(),
-  }) {
-    if (typeChanged != null) {
-      return typeChanged(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class TypeChanged implements BirdFormEvent {
-  const factory TypeChanged(String typeStr) = _$TypeChanged;
-
-  String get typeStr => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $TypeChangedCopyWith<TypeChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -658,7 +493,6 @@ class _$IsInjuredChanged
   TResult when<TResult extends Object?>({
     required TResult Function(Option<Bird> initialBirdOption) initialized,
     required TResult Function(String nameStr) nameChanged,
-    required TResult Function(String typeStr) typeChanged,
     required TResult Function(bool isInjured) isInjuredChanged,
     required TResult Function(String weightStr) weightChanged,
     required TResult Function(String reserveIdStr) reserveIdChanged,
@@ -673,7 +507,6 @@ class _$IsInjuredChanged
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<Bird> initialBirdOption)? initialized,
     TResult Function(String nameStr)? nameChanged,
-    TResult Function(String typeStr)? typeChanged,
     TResult Function(bool isInjured)? isInjuredChanged,
     TResult Function(String weightStr)? weightChanged,
     TResult Function(String reserveIdStr)? reserveIdChanged,
@@ -692,7 +525,6 @@ class _$IsInjuredChanged
   TResult map<TResult extends Object?>({
     required TResult Function(Initialized value) initialized,
     required TResult Function(NameChanged value) nameChanged,
-    required TResult Function(TypeChanged value) typeChanged,
     required TResult Function(IsInjuredChanged value) isInjuredChanged,
     required TResult Function(WeightChanged value) weightChanged,
     required TResult Function(ReserveIdChanged value) reserveIdChanged,
@@ -707,7 +539,6 @@ class _$IsInjuredChanged
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
     TResult Function(NameChanged value)? nameChanged,
-    TResult Function(TypeChanged value)? typeChanged,
     TResult Function(IsInjuredChanged value)? isInjuredChanged,
     TResult Function(WeightChanged value)? weightChanged,
     TResult Function(ReserveIdChanged value)? reserveIdChanged,
@@ -808,7 +639,6 @@ class _$WeightChanged with DiagnosticableTreeMixin implements WeightChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(Option<Bird> initialBirdOption) initialized,
     required TResult Function(String nameStr) nameChanged,
-    required TResult Function(String typeStr) typeChanged,
     required TResult Function(bool isInjured) isInjuredChanged,
     required TResult Function(String weightStr) weightChanged,
     required TResult Function(String reserveIdStr) reserveIdChanged,
@@ -823,7 +653,6 @@ class _$WeightChanged with DiagnosticableTreeMixin implements WeightChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<Bird> initialBirdOption)? initialized,
     TResult Function(String nameStr)? nameChanged,
-    TResult Function(String typeStr)? typeChanged,
     TResult Function(bool isInjured)? isInjuredChanged,
     TResult Function(String weightStr)? weightChanged,
     TResult Function(String reserveIdStr)? reserveIdChanged,
@@ -842,7 +671,6 @@ class _$WeightChanged with DiagnosticableTreeMixin implements WeightChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(Initialized value) initialized,
     required TResult Function(NameChanged value) nameChanged,
-    required TResult Function(TypeChanged value) typeChanged,
     required TResult Function(IsInjuredChanged value) isInjuredChanged,
     required TResult Function(WeightChanged value) weightChanged,
     required TResult Function(ReserveIdChanged value) reserveIdChanged,
@@ -857,7 +685,6 @@ class _$WeightChanged with DiagnosticableTreeMixin implements WeightChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
     TResult Function(NameChanged value)? nameChanged,
-    TResult Function(TypeChanged value)? typeChanged,
     TResult Function(IsInjuredChanged value)? isInjuredChanged,
     TResult Function(WeightChanged value)? weightChanged,
     TResult Function(ReserveIdChanged value)? reserveIdChanged,
@@ -959,7 +786,6 @@ class _$ReserveIdChanged
   TResult when<TResult extends Object?>({
     required TResult Function(Option<Bird> initialBirdOption) initialized,
     required TResult Function(String nameStr) nameChanged,
-    required TResult Function(String typeStr) typeChanged,
     required TResult Function(bool isInjured) isInjuredChanged,
     required TResult Function(String weightStr) weightChanged,
     required TResult Function(String reserveIdStr) reserveIdChanged,
@@ -974,7 +800,6 @@ class _$ReserveIdChanged
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<Bird> initialBirdOption)? initialized,
     TResult Function(String nameStr)? nameChanged,
-    TResult Function(String typeStr)? typeChanged,
     TResult Function(bool isInjured)? isInjuredChanged,
     TResult Function(String weightStr)? weightChanged,
     TResult Function(String reserveIdStr)? reserveIdChanged,
@@ -993,7 +818,6 @@ class _$ReserveIdChanged
   TResult map<TResult extends Object?>({
     required TResult Function(Initialized value) initialized,
     required TResult Function(NameChanged value) nameChanged,
-    required TResult Function(TypeChanged value) typeChanged,
     required TResult Function(IsInjuredChanged value) isInjuredChanged,
     required TResult Function(WeightChanged value) weightChanged,
     required TResult Function(ReserveIdChanged value) reserveIdChanged,
@@ -1008,7 +832,6 @@ class _$ReserveIdChanged
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
     TResult Function(NameChanged value)? nameChanged,
-    TResult Function(TypeChanged value)? typeChanged,
     TResult Function(IsInjuredChanged value)? isInjuredChanged,
     TResult Function(WeightChanged value)? weightChanged,
     TResult Function(ReserveIdChanged value)? reserveIdChanged,
@@ -1110,7 +933,6 @@ class _$BirthdayChanged
   TResult when<TResult extends Object?>({
     required TResult Function(Option<Bird> initialBirdOption) initialized,
     required TResult Function(String nameStr) nameChanged,
-    required TResult Function(String typeStr) typeChanged,
     required TResult Function(bool isInjured) isInjuredChanged,
     required TResult Function(String weightStr) weightChanged,
     required TResult Function(String reserveIdStr) reserveIdChanged,
@@ -1125,7 +947,6 @@ class _$BirthdayChanged
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<Bird> initialBirdOption)? initialized,
     TResult Function(String nameStr)? nameChanged,
-    TResult Function(String typeStr)? typeChanged,
     TResult Function(bool isInjured)? isInjuredChanged,
     TResult Function(String weightStr)? weightChanged,
     TResult Function(String reserveIdStr)? reserveIdChanged,
@@ -1144,7 +965,6 @@ class _$BirthdayChanged
   TResult map<TResult extends Object?>({
     required TResult Function(Initialized value) initialized,
     required TResult Function(NameChanged value) nameChanged,
-    required TResult Function(TypeChanged value) typeChanged,
     required TResult Function(IsInjuredChanged value) isInjuredChanged,
     required TResult Function(WeightChanged value) weightChanged,
     required TResult Function(ReserveIdChanged value) reserveIdChanged,
@@ -1159,7 +979,6 @@ class _$BirthdayChanged
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
     TResult Function(NameChanged value)? nameChanged,
-    TResult Function(TypeChanged value)? typeChanged,
     TResult Function(IsInjuredChanged value)? isInjuredChanged,
     TResult Function(WeightChanged value)? weightChanged,
     TResult Function(ReserveIdChanged value)? reserveIdChanged,
@@ -1228,7 +1047,6 @@ class _$Saved with DiagnosticableTreeMixin implements Saved {
   TResult when<TResult extends Object?>({
     required TResult Function(Option<Bird> initialBirdOption) initialized,
     required TResult Function(String nameStr) nameChanged,
-    required TResult Function(String typeStr) typeChanged,
     required TResult Function(bool isInjured) isInjuredChanged,
     required TResult Function(String weightStr) weightChanged,
     required TResult Function(String reserveIdStr) reserveIdChanged,
@@ -1243,7 +1061,6 @@ class _$Saved with DiagnosticableTreeMixin implements Saved {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Option<Bird> initialBirdOption)? initialized,
     TResult Function(String nameStr)? nameChanged,
-    TResult Function(String typeStr)? typeChanged,
     TResult Function(bool isInjured)? isInjuredChanged,
     TResult Function(String weightStr)? weightChanged,
     TResult Function(String reserveIdStr)? reserveIdChanged,
@@ -1262,7 +1079,6 @@ class _$Saved with DiagnosticableTreeMixin implements Saved {
   TResult map<TResult extends Object?>({
     required TResult Function(Initialized value) initialized,
     required TResult Function(NameChanged value) nameChanged,
-    required TResult Function(TypeChanged value) typeChanged,
     required TResult Function(IsInjuredChanged value) isInjuredChanged,
     required TResult Function(WeightChanged value) weightChanged,
     required TResult Function(ReserveIdChanged value) reserveIdChanged,
@@ -1277,7 +1093,6 @@ class _$Saved with DiagnosticableTreeMixin implements Saved {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initialized value)? initialized,
     TResult Function(NameChanged value)? nameChanged,
-    TResult Function(TypeChanged value)? typeChanged,
     TResult Function(IsInjuredChanged value)? isInjuredChanged,
     TResult Function(WeightChanged value)? weightChanged,
     TResult Function(ReserveIdChanged value)? reserveIdChanged,
