@@ -67,8 +67,17 @@ class QueryBody extends StatelessWidget {
         rows: queryData
             .map((reservesWithBirds) => DataRow(cells: [
                   DataCell(Text(reservesWithBirds.reserve.id.toString())),
-                  DataCell(Text(reservesWithBirds.reserve.name)),
-                  DataCell(Text(reservesWithBirds.birds)),
+                  DataCell(
+                    Text(
+                      reservesWithBirds.reserve.name,
+                    ),
+                  ),
+                  DataCell(Text(
+                    _getSplitLine(reservesWithBirds.birds),
+                    overflow: TextOverflow.ellipsis,
+                    softWrap: true,
+                    maxLines: 10,
+                  )),
                   DataCell(Text(reservesWithBirds.averageWeight != null
                       ? reservesWithBirds.averageWeight!.toStringAsFixed(2)
                       : '')),
@@ -79,4 +88,15 @@ class QueryBody extends StatelessWidget {
 
     return DataTable(columns: const [], rows: const []);
   }
+}
+
+String _getSplitLine(String text) {
+  final list = text.split(', ').toList();
+
+  for (int i = 1; i < list.length; i++) {
+    if (i % 3 == 0) {
+      list[i] += '\n';
+    }
+  }
+  return list.toString().replaceFirst('[', '').replaceFirst(']', '');
 }
